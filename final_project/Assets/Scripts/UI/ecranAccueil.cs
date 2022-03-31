@@ -17,8 +17,13 @@ public class ecranAccueil : MonoBehaviour
         
     }
 
-    void play()
+    public void play()
     {
-        SceneManager.LoadScene("game");
+        SceneManager.LoadScene("Simulateur");
+    }
+
+    public void quit()
+    {
+        Application.Quit();
     }
 }
