@@ -25,14 +25,18 @@ public class Formule4facteurs : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-    }
+        Kinf = calculNu() * calculF() * calculP() * calculEpsilon();
 
+        keff = Kinf * calculFuite();
+
+
+    }
     double calculFuite()
     {
-        double M = 0.45;
+        double M = 0.0045;
         double B = 0;
-        fuite = 1 / (10);
+        B = Mathf.Pow((float)(Mathf.PI / H), 2) + Mathf.Pow((float)(2.405 / D), 2);
+        fuite = 1 / (1 + B * M);
         return fuite;
     }
 
@@ -49,16 +53,16 @@ public class Formule4facteurs : MonoBehaviour
     {
         float z = 0f;
         float N = 0f;
-        N = (float)(enrichissement *1.42857* Mathf.Pow(10, 21));
+        N = (float)(enrichissement *1.42857* Mathf.Pow(10, 23));
         z = (float)(5.104 * Mathf.Pow(10, -12) * Mathf.Pow(N, (float)0.522) * Mathf.Pow((float)(moderation + 0.01), -1));
-        p = (Mathf.Pow((float)2.71828, -z));
+        p = (Mathf.Pow((float)2.71828, -z) - 0.05);
 
         return p;
     }
 
     double calculNu()
     {
-        nu = (2.082 / (1 + 3.957 / enrichissement));
+        nu = (2.082 / (1 + 3.957*Mathf.Pow(10, -3) / enrichissement));
 
         return nu;
     }
