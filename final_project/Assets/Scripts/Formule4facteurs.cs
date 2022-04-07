@@ -56,7 +56,7 @@ public class Formule4facteurs : MonoBehaviour
         float N = 0f;
         N = (float)(enrichissement *1.42857* Mathf.Pow(10, 23));
         z = (float)(5.104 * Mathf.Pow(10, -12) * Mathf.Pow(N, (float)0.522) * Mathf.Pow((float)(moderation + 0.01), -1));
-        p = (Mathf.Pow((float)2.71828, -z) - 0.05);
+        p = (Mathf.Pow((float)2.71828, -z));
 
         return p;
     }
