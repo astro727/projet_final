@@ -15,6 +15,7 @@ public class Formule4facteurs : MonoBehaviour
     public double fuite = 0;
     public double D = 0;
     public double H = 0;
+    public double rhoPCM = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -28,12 +29,12 @@ public class Formule4facteurs : MonoBehaviour
         Kinf = calculNu() * calculF() * calculP() * calculEpsilon();
 
         keff = Kinf * calculFuite();
-
+        rhoPCM = ((keff - 1) / keff) * 100000;
 
     }
     double calculFuite()
     {
-        double M = 0.0045;
+        double M = 35.12;
         double B = 0;
         B = Mathf.Pow((float)(Mathf.PI / H), 2) + Mathf.Pow((float)(2.405 / D), 2);
         fuite = 1 / (1 + B * M);
