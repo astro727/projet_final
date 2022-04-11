@@ -3162,7 +3162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 741c1e03b2458f74988aa0961d1dedf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nbNeutronsI: 100000
+  nbNeutronsI: 10000000000000
   nbNeutronsC: 0
   inteSource: 0
   puissance: 0
@@ -3176,6 +3176,7 @@ MonoBehaviour:
   Lambda: 0
   Ts: 0
   beta: 0.0065
+  e: 2.71828
 --- !u!1001 &1374800761
 PrefabInstance:
   m_ObjectHideFlags: 0
