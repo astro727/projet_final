@@ -11,8 +11,11 @@ public class Cinétique : MonoBehaviour
     public double tempsSous = 0;
     public double tempsSur = 0;
     public double tempsPrompt = 0;
+    public double kEffF = 0;
     public double kEff = 0;
     public double rho = 0;
+    public double pcm = 0;
+    public double pcmT = 0;
     public double T = 0;
     public double Tr = 0;
     public double Lambda = 0;
@@ -26,13 +29,17 @@ public class Cinétique : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        rho = (kEff - 1) / kEff;
+        pcm = ((kEffF - 1) / kEffF)*100000;
+        pcmT = pcm + 273 * -3 - 273*-30;
+        kEff = 1 / (pcmT / 100000);
+        
+        
 
         if (rho < 0 && nbNeutronsC <= inteSource && kEff != 0)
         {
@@ -43,7 +50,7 @@ public class Cinétique : MonoBehaviour
             T = ((-rho + beta) / -rho) * 9.03;
             Ts = (Lambda / (-rho + beta));
             nbNeutronsI =(inteSource * Lambda / -rho * ((rho / (-rho + beta) * Mathf.Pow(e, (float)(-tempsSous / Ts))) + (1 - (beta / (-rho + beta) * Mathf.Pow(e, (float)(-tempsSous / T))))));
-            puissance = 200 * 1000000 * 1.602 * Mathf.Pow(10, -21)*0.6*nbNeutronsI;
+            puissance = 200 * 1000000 * 1.602 * Mathf.Pow(10, -19)*0.6*nbNeutronsI;
             wasSub = true;
             wasPrompt = false;
             wasDelayed = false;
@@ -58,7 +65,7 @@ public class Cinétique : MonoBehaviour
             {
                 nbNeutronsC = nbNeutronsI;
             }
-            puissance = 200 * 1000000 * 1.602 * Mathf.Pow(10, -21) * 0.6 * nbNeutronsC;
+            puissance = 200 * 1000000 * 1.602 * Mathf.Pow(10, -19) * 0.6 * nbNeutronsC;
             tempsSous = 0;
             tempsPrompt = 0;
             tempsSur = 0;
@@ -77,7 +84,7 @@ public class Cinétique : MonoBehaviour
             tempsSur += Time.deltaTime;
             Tr = 0.085 / rho;
             nbNeutronsC = (nbNeutronsI *(beta/(beta-rho)*Mathf.Pow(e, (float)(tempsSur / Tr))));
-            puissance = 200 * 1000000 * 1.602 * Mathf.Pow(10, -21) * 0.6 * nbNeutronsC;
+            puissance = 200 * 1000000 * 1.602 * Mathf.Pow(10, -19) * 0.6 * nbNeutronsC;
             wasSub = false;
             wasPrompt = false;
             wasDelayed = true;
