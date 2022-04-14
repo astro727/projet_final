@@ -37,7 +37,7 @@ public class Cinétique : MonoBehaviour
     private bool wasPrompt = false;
     private bool wasDelayed = false;
     private bool wasSub = false;
-    private bool start = false;
+    public bool start = false;
 
     // Start is called before the first frame update
     void Start()
@@ -55,13 +55,13 @@ public class Cinétique : MonoBehaviour
         fuite = f4f.fuite;
         kEffF = epsilon * nu * pI * fI * fuite;
         pcm = ((kEffF - 1) / kEffF) * 100000;
-        deltaTemp = 40 * (puissance / (4.4 * Mathf.Pow(10, 12)));
+        deltaTemp = 40 * (puissance / (4.4 * Mathf.Pow(10, 9)));
         pcmT = pcm + (273+ deltaTemp) * -3 + (273+deltaTemp) * -31.62647;
         kEff = 1 / (1 - pcmT / 100000);
         p = kEff / (nu * epsilon*fI);
         
         kEff = p * f * epsilon * nu;
-        rho = kEff - 1 / kEff;
+        rho = (kEff - 1) / kEff;
 
 
         if (start == true)
@@ -77,7 +77,7 @@ public class Cinétique : MonoBehaviour
                 T = ((-rho + beta) / -rho) * 9.03;
                 Ts = (Lambda / (-rho + beta));
                 nbNeutronsI = (inteSource * Lambda / -rho * ((rho / (-rho + beta) * Mathf.Pow(e, (float)(-tempsSous / Ts))) + (1 - (beta / (-rho + beta) * Mathf.Pow(e, (float)(-tempsSous / T))))));
-                puissance = 200 * 1000000 * 1.602 * Mathf.Pow(10, -19) * 0.6 * nbNeutronsI;
+                puissance = 200 * 1000000 * 1.602 * Mathf.Pow(10, -19) * p*f * nbNeutronsI;
                 wasSub = true;
                 wasPrompt = false;
                 wasDelayed = false;
@@ -92,7 +92,7 @@ public class Cinétique : MonoBehaviour
                 {
                     nbNeutronsC = nbNeutronsI;
                 }
-                puissance = 200 * 1000000 * 1.602 * Mathf.Pow(10, -19) * 0.6 * nbNeutronsC;
+                puissance = 200 * 1000000 * 1.602 * Mathf.Pow(10, -19) * p * f * nbNeutronsC;
                 tempsSous = 0;
                 tempsPrompt = 0;
                 tempsSur = 0;
@@ -111,7 +111,7 @@ public class Cinétique : MonoBehaviour
                 tempsSur += Time.deltaTime;
                 Tr = 0.085 / rho;
                 nbNeutronsC = (nbNeutronsI * (beta / (beta - rho) * Mathf.Pow(e, (float)(tempsSur / Tr))));
-                puissance = 200 * 1000000 * 1.602 * Mathf.Pow(10, -19) * 0.6 * nbNeutronsC;
+                puissance = 200 * 1000000 * 1.602 * Mathf.Pow(10, -19) * p * f * nbNeutronsC;
                 wasSub = false;
                 wasPrompt = false;
                 wasDelayed = true;
@@ -128,7 +128,7 @@ public class Cinétique : MonoBehaviour
                 tempsPrompt += Time.deltaTime;
                 Tr = Lambda / (rho - beta);
                 nbNeutronsC = (nbNeutronsI * (Mathf.Pow(e, (float)(tempsPrompt / Tr))));
-                puissance = 200 * 1000000 * 1.602 * Mathf.Pow(10, -21) * 0.6 * nbNeutronsC;
+                puissance = 200 * 1000000 * 1.602 * Mathf.Pow(10, -21) * p * f * nbNeutronsC;
                 wasSub = false;
                 wasPrompt = true;
                 wasDelayed = false;

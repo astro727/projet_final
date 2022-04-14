@@ -897,7 +897,6 @@ GameObject:
   - component: {fileID: 376379136}
   - component: {fileID: 376379135}
   - component: {fileID: 376379134}
-  - component: {fileID: 376379138}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -991,30 +990,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &376379138
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 376379133}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68d9816f113180b42a2bcbb9dd4925ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  epsilon: 0
-  nu: 0
-  p: 0
-  f: 0
-  Kinf: 0
-  keff: 0
-  enrichissement: 0.0238
-  moderation: 4.5
-  fuite: 0
-  D: 0
-  H: 0
-  rhoPCM: 0
 --- !u!1 &415668204
 GameObject:
   m_ObjectHideFlags: 0
@@ -3162,6 +3137,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 741c1e03b2458f74988aa0961d1dedf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  epsilon: 0
+  fuite: 0
+  nu: 0
+  p: 0
+  f: 0
+  fI: 0
+  pI: 0
+  insertionP: 0
+  insertionS: 0
+  deltaTemp: 0
   nbNeutronsI: 2e+19
   nbNeutronsC: 0
   inteSource: 0
@@ -3178,8 +3163,31 @@ MonoBehaviour:
   Tr: 0
   Lambda: 0
   Ts: 0
-  beta: 0.0065
-  e: 2.71828
+  start: 0
+--- !u!114 &1366081109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1366081106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68d9816f113180b42a2bcbb9dd4925ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  epsilon: 0
+  nu: 0
+  p: 0
+  f: 0
+  Kinf: 0
+  keff: 0
+  enrichissement: 0.238
+  moderation: 5
+  fuite: 0
+  D: 305
+  H: 366
+  rhoPCM: 0
 --- !u!1001 &1374800761
 PrefabInstance:
   m_ObjectHideFlags: 0
