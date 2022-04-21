@@ -11,7 +11,7 @@ public class Formule4facteurs : MonoBehaviour
     public GameObject Rn;
 
     public double epsilon = 0;
-    public double nu = 0;
+    public double eta = 0;
     public double p = 0;
     public double f = 0;
     public double Kinf = 0;
@@ -33,7 +33,7 @@ public class Formule4facteurs : MonoBehaviour
     void Update()
     {
         
-        Kinf = calculNu() * calculF() * calculP() * calculEpsilon();
+        Kinf = calculEta() * calculF() * calculP() * calculEpsilon();
 
         keff = Kinf * calculFuite();
         rhoPCM = ((keff - 1) / keff) * 100000;
@@ -102,11 +102,11 @@ public class Formule4facteurs : MonoBehaviour
         return p;
     }
 
-    double calculNu()
+    double calculEta()
     {
-        nu = (2.082 / (1 + 3.957*Mathf.Pow(10, -3) / enrichissement));
+        eta = (2.082 / (1 + 3.957*Mathf.Pow(10, -3) / enrichissement));
 
-        return nu;
+        return eta;
     }
 
     double calculEpsilon()

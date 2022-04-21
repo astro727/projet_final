@@ -3191,7 +3191,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   epsilon: 0
   fuite: 0
-  nu: 0
+  eta: 0
   p: 0
   f: 0
   fI: 0
@@ -3231,7 +3231,7 @@ MonoBehaviour:
   E235: {fileID: 250404864}
   Rn: {fileID: 445116378}
   epsilon: 0
-  nu: 0
+  eta: 0
   p: 0
   f: 0
   Kinf: 0
@@ -4156,6 +4156,18 @@ MonoBehaviour:
       - m_Target: {fileID: 445116383}
         m_TargetAssemblyTypeName: valeurSlider, Assembly-CSharp
         m_MethodName: setText
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1366081109}
+        m_TargetAssemblyTypeName: Formule4facteurs, Assembly-CSharp
+        m_MethodName: setModeration
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
