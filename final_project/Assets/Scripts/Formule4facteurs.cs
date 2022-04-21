@@ -1,9 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Formule4facteurs : MonoBehaviour
 {
+    public GameObject E235;
+    public GameObject Rn;
+
     public double epsilon = 0;
     public double nu = 0;
     public double p = 0;
@@ -26,11 +32,46 @@ public class Formule4facteurs : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         Kinf = calculNu() * calculF() * calculP() * calculEpsilon();
 
         keff = Kinf * calculFuite();
         rhoPCM = ((keff - 1) / keff) * 100000;
 
+    }
+    public void setModeration()
+    {
+        string temp2 = Rn.GetComponent<TMP_InputField>().text;
+        
+        moderation = Convert.ToDouble(temp2);
+        if (moderation > 10)
+        {
+            moderation = 10;
+            E235.GetComponent<TMP_InputField>().text = "10";
+        }
+        if (moderation < 2)
+        {
+            moderation = 2;
+            E235.GetComponent<TMP_InputField>().text = "2";
+        }
+
+    }
+
+
+    public void setEnrichissement()
+    {
+        string temp = E235.GetComponent<TMP_InputField>().text;
+        enrichissement = Convert.ToDouble(temp) / 100;
+        if (enrichissement > 0.07)
+        {
+            enrichissement = 0.07;
+            E235.GetComponent<TMP_InputField>().text = "7";
+        }
+        if (enrichissement < 0.007)
+        {
+            enrichissement = 0.007;
+            E235.GetComponent<TMP_InputField>().text = "0.7";
+        }
     }
     double calculFuite()
     {
