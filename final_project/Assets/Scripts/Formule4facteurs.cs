@@ -1,11 +1,19 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Formule4facteurs : MonoBehaviour
 {
+    public GameObject E235;
+    public GameObject Rn;
+    public GameObject dia;
+    public GameObject haut;
+
     public double epsilon = 0;
-    public double nu = 0;
+    public double eta = 0;
     public double p = 0;
     public double f = 0;
     public double Kinf = 0;
@@ -26,12 +34,77 @@ public class Formule4facteurs : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Kinf = calculNu() * calculF() * calculP() * calculEpsilon();
-
+        
+        Kinf = calculEta() * calculF() * calculP() * calculEpsilon();
+        
         keff = Kinf * calculFuite();
         rhoPCM = ((keff - 1) / keff) * 100000;
 
     }
+    public void setModeration()
+    {
+        string temp2 = Rn.GetComponent<TMP_InputField>().text;
+        
+        moderation = Convert.ToDouble(temp2);
+        if (moderation > 10)
+        {
+            moderation = 10;
+            E235.GetComponent<TMP_InputField>().text = "10";
+        }
+        if (moderation < 2)
+        {
+            moderation = 2;
+            E235.GetComponent<TMP_InputField>().text = "2";
+        }
+
+    }
+
+
+    public void setEnrichissement()
+    {
+        string temp = E235.GetComponent<TMP_InputField>().text;
+        enrichissement = Convert.ToDouble(temp) / 100;
+        if (enrichissement > 0.07)
+        {
+            enrichissement = 0.07;
+            E235.GetComponent<TMP_InputField>().text = "7";
+        }
+        if (enrichissement < 0.007)
+        {
+            enrichissement = 0.007;
+            E235.GetComponent<TMP_InputField>().text = "0.7";
+        }
+    }
+
+    public void setDimensions()
+    {
+        string temp = dia.GetComponent<TMP_InputField>().text;
+        D = Convert.ToDouble(temp);
+        if (D > 500)
+        {
+            D = 500;
+            dia.GetComponent<TMP_InputField>().text = "500";
+        }
+        if (D < 100)
+        {
+            D = 100;
+            dia.GetComponent<TMP_InputField>().text = "100";
+        }
+
+        string temp2 = haut.GetComponent<TMP_InputField>().text;
+        H = Convert.ToDouble(temp2);
+        if (H > 500)
+        {
+            H = 500;
+            haut.GetComponent<TMP_InputField>().text = "500";
+        }
+        if (H < 100)
+        {
+            H = 100;
+            haut.GetComponent<TMP_InputField>().text = "100";
+        }
+    }
+
     double calculFuite()
     {
         double M = 35.12;
@@ -61,11 +134,11 @@ public class Formule4facteurs : MonoBehaviour
         return p;
     }
 
-    double calculNu()
+    double calculEta()
     {
-        nu = (2.082 / (1 + 3.957*Mathf.Pow(10, -3) / enrichissement));
+        eta = (2.082 / (1 + 3.957*Mathf.Pow(10, -3) / enrichissement));
 
-        return nu;
+        return eta;
     }
 
     double calculEpsilon()
