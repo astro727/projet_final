@@ -9,6 +9,8 @@ public class Formule4facteurs : MonoBehaviour
 {
     public GameObject E235;
     public GameObject Rn;
+    public GameObject dia;
+    public GameObject haut;
 
     public double epsilon = 0;
     public double eta = 0;
@@ -34,7 +36,7 @@ public class Formule4facteurs : MonoBehaviour
     {
         
         Kinf = calculEta() * calculF() * calculP() * calculEpsilon();
-
+        
         keff = Kinf * calculFuite();
         rhoPCM = ((keff - 1) / keff) * 100000;
 
@@ -73,6 +75,36 @@ public class Formule4facteurs : MonoBehaviour
             E235.GetComponent<TMP_InputField>().text = "0.7";
         }
     }
+
+    public void setDimensions()
+    {
+        string temp = dia.GetComponent<TMP_InputField>().text;
+        D = Convert.ToDouble(temp);
+        if (D > 500)
+        {
+            D = 500;
+            dia.GetComponent<TMP_InputField>().text = "500";
+        }
+        if (D < 100)
+        {
+            D = 100;
+            dia.GetComponent<TMP_InputField>().text = "100";
+        }
+
+        string temp2 = haut.GetComponent<TMP_InputField>().text;
+        H = Convert.ToDouble(temp2);
+        if (H > 500)
+        {
+            H = 500;
+            haut.GetComponent<TMP_InputField>().text = "500";
+        }
+        if (H < 100)
+        {
+            H = 100;
+            haut.GetComponent<TMP_InputField>().text = "100";
+        }
+    }
+
     double calculFuite()
     {
         double M = 35.12;
