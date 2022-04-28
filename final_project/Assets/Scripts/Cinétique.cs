@@ -1,10 +1,16 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Cinétique : MonoBehaviour
 {
     private Formule4facteurs f4f;
+    public GameObject positionC;
+    public GameObject positionP;
+    public GameObject positionI;
+
     public double epsilon = 0;
     public double fuite = 0;
     public double eta = 0;
@@ -14,7 +20,7 @@ public class Cinétique : MonoBehaviour
     public double pI = 0;
     public double insertionP = 0;
     public double insertionS = 0;
-
+    
     public double deltaTemp = 0;
     public double nbNeutronsI = 0;
     public double nbNeutronsC = 0;
@@ -117,6 +123,11 @@ public class Cinétique : MonoBehaviour
                 tempsSur = 0;
                 break;
         }
+    }
+
+    public void barreControle()
+    {
+        f = fI * (1 - (Convert.ToDouble(positionC.GetComponent<TMP_InputField>().text) / 100) + 0.1 - (Convert.ToDouble(positionI.GetComponent<TMP_InputField>().text) / 1000) + 0.01- (Convert.ToDouble(positionP.GetComponent<TMP_InputField>().text) / 10000));
     }
 
     void sousCritique()
