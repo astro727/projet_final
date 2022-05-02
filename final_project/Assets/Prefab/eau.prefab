@@ -133,6 +133,11 @@ MonoBehaviour:
   position_X: 0
   position_Y: 96
   position_Z: -245.1
-  destroy_X: -72
+  destroy_X: -67
   destroy_Y: 0
-  destroy_Z: 0
+  destroy_Z: -263
+  deplacement:
+  - {x: -68.44, y: 96, z: -264.14}
+  lerpTime: 1
+  elapsedTime: 0
+  desiredDuration: 5
