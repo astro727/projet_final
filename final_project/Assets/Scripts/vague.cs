@@ -41,7 +41,7 @@ public class vague : MonoBehaviour
     void Update()
     {
         moveObject(0);
-        moveObject(1);
+        //moveObject(1);
         //moveObject(2);
         //moveObject(3);
         //destroyGameObject();

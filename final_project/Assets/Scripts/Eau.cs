@@ -52,7 +52,7 @@ public class Eau : MonoBehaviour
         //position.y = position_Y;
         //position.z = position_Z;
 
-        Instantiate(tuyau, position, Quaternion.Euler(-90f,0f,62f));
+        Instantiate(tuyau, position, Quaternion.Euler(-90f,0f,48f));
         //Instantiate(tuyau, position, Quaternion.Euler(rotation.x, 0f, rotation.z));
     }
 
