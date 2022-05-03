@@ -11,6 +11,7 @@ public class Eau : MonoBehaviour
     public float position_Y = 80.7f;
     public float position_Z = -245.1f;
     [SerializeField] Vector3[] startPosition;
+    [SerializeField] Quaternion[] rotation;
     [SerializeField] float spawnTime = 2f;
 
     int pos = 0;
@@ -35,6 +36,7 @@ public class Eau : MonoBehaviour
         {
             elapsed = elapsed % 0.3f;
             spawnObject(0);
+            spawnObject(1);
 
         }
            
@@ -43,12 +45,12 @@ public class Eau : MonoBehaviour
     void spawnObject(int pos)
     {
         // lenght = deplacement.Length;
-        Vector3 position = startPosition[0];
+        Vector3 position = startPosition[pos];
         //Vector3 position = transform.position;
         Quaternion rotation = transform.rotation;
-        position.x = position_X;
-        position.y = position_Y;
-        position.z = position_Z;
+       // position.x = position_X;
+        //position.y = position_Y;
+        //position.z = position_Z;
 
         Instantiate(tuyau, position, Quaternion.Euler(-90f,0f,62f));
         //Instantiate(tuyau, position, Quaternion.Euler(rotation.x, 0f, rotation.z));

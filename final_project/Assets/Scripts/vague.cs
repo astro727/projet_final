@@ -21,10 +21,12 @@ public class vague : MonoBehaviour
     public float elapsedTime;
     public float desiredDuration = 5f;
     private Vector3 startPosition;
+    [SerializeField] Vector3[] startPosition1;
 
     int pos = 0;
     int lenght;
     float t = 0f;
+    int index = 0;
 
 
     // public Vector3 position;
@@ -38,15 +40,19 @@ public class vague : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        moveObject();
+        moveObject(0);
+        moveObject(1);
+        //moveObject(2);
+        //moveObject(3);
         //destroyGameObject();
     }
 
-    void moveObject()
+    void moveObject(int indice)
     {
         elapsedTime += Time.deltaTime;
         float percentageChange = elapsedTime / lerpTime;
-        transform.position = Vector3.Lerp(startPosition, deplacement[pos], percentageChange);
+        //transform.position = Vector3.Lerp(startPosition, deplacement[indice], percentageChange);
+        transform.position = Vector3.Lerp(startPosition1[indice], deplacement[indice], percentageChange);
 
         t = Mathf.Lerp(t, 1f, lerpTime * Time.deltaTime);
         if(t>.9f)
