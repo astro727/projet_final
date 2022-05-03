@@ -29,6 +29,7 @@ public class Cinétique : MonoBehaviour
     public double tempsSous = 0;
     public double tempsSur = 0;
     public double tempsPrompt = 0;
+    public double tempsRed = 0;
     public double kEffF = 0;
     public double kEff = 0;
     public double rho = 0;
@@ -60,16 +61,24 @@ public class Cinétique : MonoBehaviour
         {
             etatPrecedent();
             puissanceInstantane();
+            if(deltaTemp > 50)
+            {
+                SCRAM();
+            }
 
-            if (rho < 0 && nbNeutronsC <= inteSource && kEff != 0)
+            if (rho < -0.0001 && nbNeutronsI == 0)
             {
                 sousCritique();
             }
-            if (rho == 0)
+            if (rho < -0.0001 && nbNeutronsI != 0)
+            {
+                reduction();
+            }
+            if (rho < 0.0001 && rho > -0.0001)
             {
                 critique();
             }
-            if (rho > 0 && rho < beta)
+            if (rho > 0.0001 && rho < beta)
             {
                 superCritiqueRetarde();
             }
@@ -106,21 +115,31 @@ public class Cinétique : MonoBehaviour
                 tempsSous += Time.deltaTime;
                 tempsSur = 0;
                 tempsPrompt = 0;
+                tempsRed = 0;
                 break;
             case 2:
                 tempsSous = 0;
                 tempsPrompt = 0;
                 tempsSur += Time.deltaTime;
+                tempsRed = 0;
                 break;
             case 3:
                 tempsSous = 0;
                 tempsSur = 0;
                 tempsPrompt += Time.deltaTime;
+                tempsRed = 0;
+                break;
+            case 4:
+                tempsSous = 0;
+                tempsSur = 0;
+                tempsPrompt = 0;
+                tempsRed += Time.deltaTime;
                 break;
             default:
                 tempsSous = 0;
                 tempsPrompt = 0;
                 tempsSur = 0;
+                tempsRed = 0;
                 break;
         }
     }
@@ -147,7 +166,7 @@ public class Cinétique : MonoBehaviour
 
     void superCritiqueRetarde()
     {
-        if (etat == 3)
+        if (etat != 2)
         {
             nbNeutronsI = nbNeutronsC;
         }
@@ -158,7 +177,7 @@ public class Cinétique : MonoBehaviour
 
     void superCritiquePrompt()
     {
-        if (etat == 2)
+        if (etat != 3)
         {
             nbNeutronsI = nbNeutronsC;
         }
@@ -168,9 +187,26 @@ public class Cinétique : MonoBehaviour
         etat = 3;
     }
 
+    void reduction()
+    {
+        if(etat != 4)
+        {
+            nbNeutronsI = nbNeutronsC;
+        }
+        nbNeutronsC = nbNeutronsI * ((1/(1+ (-rho)))*MathF.Pow(e,(float)-tempsRed/80));
+        etat = 4;
+    }
+
     void puissanceInstantane()
     {
         puissance = 200 * 1000000 * 1.602 * Mathf.Pow(10, -21) * p * f * nbNeutronsC;
+    }
+
+    void SCRAM()
+    {
+        positionC.GetComponent<TMP_InputField>().text = "100";
+        positionI.GetComponent<TMP_InputField>().text = "100";
+        barreControle();
     }
 
 }

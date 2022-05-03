@@ -11,6 +11,10 @@ public class valeurCinetique : MonoBehaviour
     public GameObject f;
     public GameObject T;
     public GameObject P;
+    public GameObject positionC;
+    public GameObject positionP;
+    public GameObject positionI;
+    double finst;
 
     public GameObject reacteur;
     Cinétique cin;
@@ -56,8 +60,8 @@ public class valeurCinetique : MonoBehaviour
         {
             P.GetComponent<TMP_Text>().text = "P = 0W";
         }
-
-        rho.GetComponent<TMP_Text>().text = "réactivité = " + (Math.Round(cin.rho / 0.0065, 2)).ToString() + "$";
+        finst = cin.fI* (1 - (Convert.ToDouble(positionC.GetComponent<TMP_InputField>().text) / 100) + 0.1 - (Convert.ToDouble(positionI.GetComponent<TMP_InputField>().text) / 1000) + 0.01 - (Convert.ToDouble(positionP.GetComponent<TMP_InputField>().text) / 10000));
+        rho.GetComponent<TMP_Text>().text = "réactivité = " + (Math.Round(cin.rho / 0.0065, 2)).ToString() + "$ (" + Math.Round(((cin.p*cin.epsilon*cin.eta*finst-1)/ (cin.p * cin.epsilon * cin.eta * finst))/0.0065, 2) + ")";
         if(cin.rho > 0.0065)
         {
             rho.GetComponent<TMP_Text>().color = Color.red;
