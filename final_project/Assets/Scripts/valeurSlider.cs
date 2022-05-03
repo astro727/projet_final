@@ -22,7 +22,7 @@ public class valeurSlider : MonoBehaviour
 
     public void setText()
     {
-        this.GetComponent<TMP_InputField>().text = slider.GetComponent<Slider>().value.ToString();
+        this.GetComponent<TMP_InputField>().text = Math.Round(slider.GetComponent<Slider>().value, 2).ToString();
     }
 
     public void setSlider()
