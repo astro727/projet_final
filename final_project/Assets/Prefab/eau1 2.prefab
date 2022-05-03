@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6392000632939115506}
   - component: {fileID: 4114863333152126547}
   m_Layer: 0
-  m_Name: eau
+  m_Name: eau1 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -127,21 +127,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0a275d227c3145458896464997857e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tuyau: {fileID: 0}
-  deleteBox: {fileID: 0}
-  speed: 25
-  position_X: 0
-  position_Y: 96
-  position_Z: -245.1
-  destroy_X: -67
-  destroy_Y: 0
-  destroy_Z: -263
   deplacement:
-  - {x: -8.41, y: 96.09, z: -34.81}
-  - {x: -11.09, y: 96.09, z: 52.54}
+  - {x: 38.13, y: 96.09, z: 56.31}
   lerpTime: 1
   elapsedTime: 0
-  desiredDuration: 5
-  startPosition1:
-  - {x: -66.12, y: 96.59, z: -83.31}
-  - {x: -65.8, y: 96.59, z: 98.4}
+  destroyPosition: []
+  deleteBox: {fileID: 5142069547160713192, guid: a609f58c8d4b9824b9d1a8c812289385, type: 3}
+  boxPosition: {x: 0, y: 0, z: 0}

@@ -13,6 +13,7 @@ public class Eau : MonoBehaviour
     [SerializeField] Vector3[] startPosition;
     [SerializeField] Quaternion[] rotation;
     [SerializeField] float spawnTime = 2f;
+    [SerializeField] Vector3 boxPosition;
 
     int pos = 0;
     int lenght;
@@ -22,22 +23,18 @@ public class Eau : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //spawnObject(0);
-
-        
+        boxPosition = transform.position;
+        //spawnObject(0)
     }
 
     // Update is called once per frame
     void Update()
     {
-        
         elapsed += Time.deltaTime;
         if (elapsed >=0.3f)
         {
             elapsed = elapsed % 0.3f;
             spawnObject(0);
-            spawnObject(1);
-
         }
            
     }
@@ -52,14 +49,8 @@ public class Eau : MonoBehaviour
         //position.y = position_Y;
         //position.z = position_Z;
 
-        Instantiate(tuyau, position, Quaternion.Euler(-90f,0f,48f));
+        //Instantiate(tuyau, position, Quaternion.Euler(-90f,0f,48f));
+        Instantiate(tuyau, boxPosition, Quaternion.Euler(-90f,0f,48f));
         //Instantiate(tuyau, position, Quaternion.Euler(rotation.x, 0f, rotation.z));
-    }
-
-    void moveObject()
-    {
-        Vector3 position = transform.position;
-        position.x -= speed * Time.deltaTime;
-        transform.position = position;
     }
 }
