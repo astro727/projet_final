@@ -4,53 +4,41 @@ using UnityEngine;
 
 public class Eau : MonoBehaviour
 {
-
+    // Ce script doit être placé dans chaque cube de départ.,
+    // On doit ajouter le bon prefab qui correspond au type de tuyau, soit chaud ou froid.
     public GameObject tuyau;
-    public float speed = 10.0f;
-    public float position_X = 0f;
-    public float position_Y = 80.7f;
-    public float position_Z = -245.1f;
     [SerializeField] Vector3[] startPosition;
     [SerializeField] Quaternion[] rotation;
-    [SerializeField] float spawnTime = 2f;
-    [SerializeField] Vector3 boxPosition;
 
     int pos = 0;
-    int lenght;
     float t = 0f;
     float elapsed = 0f;
+    public float timeIntervalle = 0.3f;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        boxPosition = transform.position;
-        //spawnObject(0)
-    }
 
     // Update is called once per frame
+    // Cette fontion permet de créer des objets avec un intervalle donné
     void Update()
     {
         elapsed += Time.deltaTime;
-        if (elapsed >=0.3f)
+        if (elapsed >= timeIntervalle)
         {
-            elapsed = elapsed % 0.3f;
-            spawnObject(0);
+            elapsed = elapsed % timeIntervalle;
+            spawnObject(pos);
         }
            
     }
 
+    // Cette fonction permet de créer les cylindres pour représenter le déplacement de l'eau du réacteur.
     void spawnObject(int pos)
     {
         // lenght = deplacement.Length;
         Vector3 position = startPosition[pos];
         //Vector3 position = transform.position;
         Quaternion rotation = transform.rotation;
-       // position.x = position_X;
-        //position.y = position_Y;
-        //position.z = position_Z;
 
-        //Instantiate(tuyau, position, Quaternion.Euler(-90f,0f,48f));
-        Instantiate(tuyau, boxPosition, Quaternion.Euler(-90f,0f,48f));
+        Instantiate(tuyau, position, Quaternion.Euler(-90f,0f,48f));
+        //Instantiate(tuyau, boxPosition, Quaternion.Euler(-90f,0f,48f));
         //Instantiate(tuyau, position, Quaternion.Euler(rotation.x, 0f, rotation.z));
     }
 }
