@@ -29,6 +29,7 @@ public class Cinétique : MonoBehaviour
     public double tempsSous = 0;
     public double tempsSur = 0;
     public double tempsPrompt = 0;
+    public double tempsRed = 0;
     public double kEffF = 0;
     public double kEff = 0;
     public double rho = 0;
@@ -41,9 +42,12 @@ public class Cinétique : MonoBehaviour
 
     private double beta = 0.0065;
     private float e = 2.71828f;
+    private bool scram = false;
+    private double keffI = 0;
 
     public bool start = false;
     private int etat = 0;
+    private int masseEau = 26000;
 
     // Start is called before the first frame update
     void Start()
@@ -54,22 +58,31 @@ public class Cinétique : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        temperature();
         reactivite();
 
         if (start == true)
         {
-            etatPrecedent();
             puissanceInstantane();
+            etatPrecedent();
+            if(deltaTemp > 50)
+            {
+                SCRAM();
+            }
 
-            if (rho < 0 && nbNeutronsC <= inteSource && kEff != 0)
+            if (rho < -0.0001 && nbNeutronsI == 0)
             {
                 sousCritique();
             }
-            if (rho == 0)
+            if (rho < -0.0001 && nbNeutronsI != 0)
+            {
+                reduction();
+            }
+            if (rho < 0.0001 && rho > -0.0001)
             {
                 critique();
             }
-            if (rho > 0 && rho < beta)
+            if (rho > 0.0001 && rho < beta)
             {
                 superCritiqueRetarde();
             }
@@ -82,20 +95,49 @@ public class Cinétique : MonoBehaviour
 
     void reactivite()
     {
-        epsilon = f4f.epsilon;
-        eta = f4f.eta;
-        fI = f4f.f;
-        pI = f4f.p;
-        fuite = f4f.fuite;
-        kEffF = epsilon * eta * pI * fI * fuite;
-        pcm = ((kEffF - 1) / kEffF) * 100000;
-        deltaTemp = 40 * (puissance / (4.4 * Mathf.Pow(10, 9)));
+        if(start == false)
+        {
+            epsilon = f4f.epsilon;
+            eta = f4f.eta;
+            fI = f4f.f;
+            pI = f4f.p;
+            fuite = f4f.fuite;
+            kEffF = epsilon * eta * pI * fI * fuite;
+            pcm = ((kEffF - 1) / kEffF) * 100000;
+        }
+
         pcmT = pcm + (273 + deltaTemp) * -3 + (273 + deltaTemp) * -31.62647;
-        kEff = 1 / (1 - pcmT / 100000);
-        p = kEff / (eta * epsilon * fI);
+        keffI = 1 / (1 - pcmT / 100000);
+        p = keffI / (eta * epsilon * fI);
 
         kEff = p * f * epsilon * eta;
         rho = (kEff - 1) / kEff;
+    }
+
+    void temperature()
+    {
+        if(scram == false)
+        {
+            if(deltaTemp < 40)
+            {
+                deltaTemp = 40 * (puissance / (4.4 * Mathf.Pow(10, 9)));
+            }
+            else
+            {
+                deltaTemp += ((puissance/10) * Time.deltaTime) / (masseEau * 4184);
+            }
+        }
+        else 
+        {
+            if(deltaTemp > 1)
+            {
+                deltaTemp -= (Time.deltaTime * 600000000) / (masseEau * 4184);
+            }
+            else 
+            {
+                deltaTemp = 40 * (puissance / (4.4 * Mathf.Pow(10, 9)));
+            }
+        }
     }
 
     void etatPrecedent()
@@ -106,21 +148,31 @@ public class Cinétique : MonoBehaviour
                 tempsSous += Time.deltaTime;
                 tempsSur = 0;
                 tempsPrompt = 0;
+                tempsRed = 0;
                 break;
             case 2:
                 tempsSous = 0;
                 tempsPrompt = 0;
                 tempsSur += Time.deltaTime;
+                tempsRed = 0;
                 break;
             case 3:
                 tempsSous = 0;
                 tempsSur = 0;
                 tempsPrompt += Time.deltaTime;
+                tempsRed = 0;
+                break;
+            case 4:
+                tempsSous = 0;
+                tempsSur = 0;
+                tempsPrompt = 0;
+                tempsRed += Time.deltaTime;
                 break;
             default:
                 tempsSous = 0;
                 tempsPrompt = 0;
                 tempsSur = 0;
+                tempsRed = 0;
                 break;
         }
     }
@@ -147,7 +199,7 @@ public class Cinétique : MonoBehaviour
 
     void superCritiqueRetarde()
     {
-        if (etat == 3)
+        if (etat != 2)
         {
             nbNeutronsI = nbNeutronsC;
         }
@@ -158,7 +210,7 @@ public class Cinétique : MonoBehaviour
 
     void superCritiquePrompt()
     {
-        if (etat == 2)
+        if (etat != 3)
         {
             nbNeutronsI = nbNeutronsC;
         }
@@ -168,9 +220,27 @@ public class Cinétique : MonoBehaviour
         etat = 3;
     }
 
+    void reduction()
+    {
+        if(etat != 4)
+        {
+            nbNeutronsI = nbNeutronsC;
+        }
+        nbNeutronsC = nbNeutronsI * ((1/(1+ (-rho)))*MathF.Pow(e,(float)-tempsRed/80));
+        etat = 4;
+    }
+
     void puissanceInstantane()
     {
         puissance = 200 * 1000000 * 1.602 * Mathf.Pow(10, -21) * p * f * nbNeutronsC;
+    }
+
+    void SCRAM()
+    {
+        positionC.GetComponent<TMP_InputField>().text = "100";
+        positionI.GetComponent<TMP_InputField>().text = "100";
+        scram = true;
+        barreControle();
     }
 
 }
