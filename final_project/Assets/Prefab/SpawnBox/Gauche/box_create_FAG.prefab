@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8256952942674874663}
   - component: {fileID: 8256952942674874662}
   - component: {fileID: 8256952942674874661}
-  - component: {fileID: 8256952942674874660}
   m_Layer: 0
   m_Name: box_create_FAG
   m_TagString: Untagged
@@ -64,21 +63,4 @@ MonoBehaviour:
   - {x: 95.29, y: 96.59, z: 104.02}
   rotation:
   - {x: 0.2988363, y: -0.6408564, z: -0.6408564, w: -0.2988363}
-  timeIntervalle: 0.3
---- !u!114 &8256952942674874660
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8256952942674874683}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84bec16185ae0f044be449e06c3ae94a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tuyau: {fileID: 6392000632939115404, guid: 55ecab3618f49b64095d3f992d428e4d, type: 3}
-  startPosition:
-  - {x: -66.12, y: 96.59, z: -83.31}
-  rotation: []
   timeIntervalle: 0.3
