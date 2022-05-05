@@ -10864,8 +10864,8 @@ MonoBehaviour:
   insertionP: 0
   insertionS: 0
   deltaTemp: 0
-  nbNeutronsI: 10000000000000000
-  nbNeutronsC: 10000000000000000
+  nbNeutronsI: 0
+  nbNeutronsC: 0
   inteSource: 0
   puissance: 0
   tempsSous: 0
