@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6392000632939115506}
   - component: {fileID: 4114863333152126547}
   m_Layer: 0
-  m_Name: eau1 3
+  m_Name: eau_FAG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -128,9 +128,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deplacement:
-  - {x: 35.4, y: 96.09, z: -32.4}
+  - {x: 286.7, y: 123.1358, z: 29.59497}
   lerpTime: 1
   elapsedTime: 0
-  destroyPosition: []
-  deleteBox: {fileID: 3623811824146814810, guid: 771acd9572a8ed147b3327323b6d353a, type: 3}
-  boxPosition: {x: 0, y: 0, z: 0}

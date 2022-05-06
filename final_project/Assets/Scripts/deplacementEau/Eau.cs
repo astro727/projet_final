@@ -8,7 +8,7 @@ public class Eau : MonoBehaviour
     // On doit ajouter le bon prefab qui correspond au type de tuyau, soit chaud ou froid.
     public GameObject tuyau;
     [SerializeField] Vector3[] startPosition;
-    [SerializeField] Quaternion[] rotation;
+    [SerializeField] float[] rotation;
 
     int pos = 0;
     float t = 0f;
@@ -35,9 +35,16 @@ public class Eau : MonoBehaviour
         // lenght = deplacement.Length;
         Vector3 position = startPosition[pos];
         //Vector3 position = transform.position;
-        Quaternion rotation = transform.rotation;
+        //Quaternion rotation = transform.rotation;
 
-        Instantiate(tuyau, position, Quaternion.Euler(-90f,0f,48f));
+
+        //if(tuyau.name == "eau_FDG")
+        //{
+        //    Instantiate(tuyau, position, Quaternion.Euler(rotation[pos], rotation[pos], rotation[pos]));
+        //}
+
+        Instantiate(tuyau, position, Quaternion.Euler(rotation[0], rotation[1], rotation[2]));
+        //Instantiate(tuyau, position, Quaternion.Euler(-90f,0f,48f));
         //Instantiate(tuyau, boxPosition, Quaternion.Euler(-90f,0f,48f));
         //Instantiate(tuyau, position, Quaternion.Euler(rotation.x, 0f, rotation.z));
     }
