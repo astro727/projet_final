@@ -32,20 +32,7 @@ public class Eau : MonoBehaviour
     // Cette fonction permet de créer les cylindres pour représenter le déplacement de l'eau du réacteur.
     void spawnObject(int pos)
     {
-        // lenght = deplacement.Length;
         Vector3 position = startPosition[pos];
-        //Vector3 position = transform.position;
-        //Quaternion rotation = transform.rotation;
-
-
-        //if(tuyau.name == "eau_FDG")
-        //{
-        //    Instantiate(tuyau, position, Quaternion.Euler(rotation[pos], rotation[pos], rotation[pos]));
-        //}
-
         Instantiate(tuyau, position, Quaternion.Euler(rotation[0], rotation[1], rotation[2]));
-        //Instantiate(tuyau, position, Quaternion.Euler(-90f,0f,48f));
-        //Instantiate(tuyau, boxPosition, Quaternion.Euler(-90f,0f,48f));
-        //Instantiate(tuyau, position, Quaternion.Euler(rotation.x, 0f, rotation.z));
     }
 }
