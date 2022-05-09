@@ -16,6 +16,7 @@ public class vague : MonoBehaviour
     int pos = 0;
     int lenght;
     float t = 0f;
+    public static bool start;
 
     // Start is called before the first frame update
     // Cette fonction permet récupérer la distance que le cylindre doit parcourir ainsi 
@@ -31,8 +32,11 @@ public class vague : MonoBehaviour
     // en fessant sorte que le cylindre se déplace et se détruise quand il arrive à l'arrivée
     void Update()
     {
-        moveObject(pos);
-        destroyGameObject();
+        if(start == true)
+        {
+            moveObject(pos);
+            destroyGameObject();
+        }
     }
 
     // Cette fonction permet de faire bouger les cylindres pour simuler le déplacement d'eau

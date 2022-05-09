@@ -36,5 +36,7 @@ public class Boutton : MonoBehaviour
             fonctionnement.SetActive(true);
             setup.SetActive(false);
         }
+
+        vague.start = true;
     }
 }

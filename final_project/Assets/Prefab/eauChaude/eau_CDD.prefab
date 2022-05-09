@@ -131,3 +131,4 @@ MonoBehaviour:
   - {x: 408.24, y: 123.1358, z: 110.2351}
   lerpTime: 1
   elapsedTime: 0
+  start: 1

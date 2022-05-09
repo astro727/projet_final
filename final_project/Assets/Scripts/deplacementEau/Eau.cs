@@ -14,19 +14,22 @@ public class Eau : MonoBehaviour
     float t = 0f;
     float elapsed = 0f;
     public float timeIntervalle = 0.3f;
+   // public static bool start;
 
 
     // Update is called once per frame
     // Cette fontion permet de créer des objets avec un intervalle donné
     void Update()
     {
-        elapsed += Time.deltaTime;
-        if (elapsed >= timeIntervalle)
+        if(vague.start == true)
         {
-            elapsed = elapsed % timeIntervalle;
-            spawnObject(pos);
-        }
-           
+            elapsed += Time.deltaTime;
+            if (elapsed >= timeIntervalle)
+            {
+                elapsed = elapsed % timeIntervalle;
+                spawnObject(pos);
+            }
+        }  
     }
 
     // Cette fonction permet de créer les cylindres pour représenter le déplacement de l'eau du réacteur.
