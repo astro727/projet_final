@@ -20,6 +20,7 @@ public class Cinétique : MonoBehaviour
     public double pI = 0;
     public double insertionP = 0;
     public double insertionS = 0;
+    public double forcePompe = 0;
     
     public double deltaTemp = 0;
     public double nbNeutronsI = 0;
@@ -116,27 +117,13 @@ public class Cinétique : MonoBehaviour
 
     void temperature()
     {
-        if(scram == false)
+        if(deltaTemp > -253)
         {
-            if(deltaTemp < 40)
-            {
-                deltaTemp = 40 * (puissance / (4.4 * Mathf.Pow(10, 9)));
-            }
-            else
-            {
-                deltaTemp += ((puissance/10) * Time.deltaTime) / (masseEau * 4184);
-            }
+            deltaTemp += Time.deltaTime * ((forcePompe/(-4184 * masseEau)) + (puissance/(4184*masseEau)));
         }
-        else 
+        else
         {
-            if(deltaTemp > 1)
-            {
-                deltaTemp -= (Time.deltaTime * 600000000) / (masseEau * 4184);
-            }
-            else 
-            {
-                deltaTemp = 40 * (puissance / (4.4 * Mathf.Pow(10, 9)));
-            }
+            deltaTemp = -253;
         }
     }
 
