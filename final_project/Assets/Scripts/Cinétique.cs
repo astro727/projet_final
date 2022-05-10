@@ -10,6 +10,8 @@ public class Cinétique : MonoBehaviour
     public GameObject positionC;
     public GameObject positionP;
     public GameObject positionI;
+    public GameObject pompes;
+    public GameObject neutrons;
 
     public double epsilon = 0;
     public double fuite = 0;
@@ -20,7 +22,8 @@ public class Cinétique : MonoBehaviour
     public double pI = 0;
     public double insertionP = 0;
     public double insertionS = 0;
-    public double forcePompe = 0;
+    public double forcePompe = 24000000;
+    public double chaleurPompe = 24000000;
     
     public double deltaTemp = 0;
     public double nbNeutronsI = 0;
@@ -94,6 +97,16 @@ public class Cinétique : MonoBehaviour
         }
     }
 
+    public void setPuissancePompe()
+    {
+        forcePompe = Convert.ToDouble(pompes.GetComponent<TMP_InputField>().text)*1000000;
+    }
+
+    public void setIntensiteSource()
+    {
+        inteSource = Convert.ToDouble(neutrons.GetComponent<TMP_InputField>().text);
+    }
+
     void reactivite()
     {
         if(start == false)
@@ -119,7 +132,7 @@ public class Cinétique : MonoBehaviour
     {
         if(deltaTemp > -253)
         {
-            deltaTemp += Time.deltaTime * ((forcePompe/(-4184 * masseEau)) + (puissance/(4184*masseEau)));
+            deltaTemp += Time.deltaTime * ((forcePompe/(-4184 * masseEau)) + (chaleurPompe/(4184*masseEau)) + (puissance/(4184*masseEau)));
         }
         else
         {

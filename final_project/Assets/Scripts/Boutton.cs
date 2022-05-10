@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Boutton : MonoBehaviour
@@ -24,6 +26,17 @@ public class Boutton : MonoBehaviour
         
     }
 
+    public void lancer()
+    {
+        cin.start = true;
+        GameObject temp;
+        temp = GameObject.Find("Source");
+        if (Convert.ToDouble(temp.GetComponent<TMP_InputField>().text) > 0)
+        {
+            temp.SetActive(false);
+            this.gameObject.SetActive(false);
+        }
+    }
     public void confirmer()
     {
         cin.barreControle();
