@@ -21,6 +21,9 @@ public class Eau : MonoBehaviour
     // Cette fontion permet de créer des objets avec un intervalle donné
     void Update()
     {
+        // Pour modifier la vitesse, il faut changer la variable vague.lerptime. Plus la vitesse est petite, plus elle va aller vite
+        timeIntervalle = vague.lerpTime * 0.3f;
+
         if(vague.start == true)
         {
             elapsed += Time.deltaTime;
