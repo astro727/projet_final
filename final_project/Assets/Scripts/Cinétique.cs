@@ -30,17 +30,13 @@ public class Cinétique : MonoBehaviour
     public double nbNeutronsC = 0;
     public double inteSource = 0;
     public double puissance = 0;
-    public double tempsSous = 0;
-    public double tempsSur = 0;
-    public double tempsPrompt = 0;
-    public double tempsRed = 0;
+    public double temps = 0;
     public double kEffF = 0;
     public double kEff = 0;
     public double rho = 0;
     public double pcm = 0;
     public double pcmT = 0;
     public double T = 0;
-    public double Tr = 0;
     public double Lambda = 0;
     public double Ts = 0;
 
@@ -62,17 +58,17 @@ public class Cinétique : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (deltaTemp > 60)
+        {
+            SCRAM();
+        }
         temperature();
         reactivite();
 
         if (start == true)
         {
+
             puissanceInstantane();
-            etatPrecedent();
-            if(deltaTemp > 50)
-            {
-                SCRAM();
-            }
 
             if (rho < -0.0001 && nbNeutronsI == 0)
             {
@@ -140,42 +136,6 @@ public class Cinétique : MonoBehaviour
         }
     }
 
-    void etatPrecedent()
-    {
-        switch(etat)
-        {
-            case 1:
-                tempsSous += Time.deltaTime;
-                tempsSur = 0;
-                tempsPrompt = 0;
-                tempsRed = 0;
-                break;
-            case 2:
-                tempsSous = 0;
-                tempsPrompt = 0;
-                tempsSur += Time.deltaTime;
-                tempsRed = 0;
-                break;
-            case 3:
-                tempsSous = 0;
-                tempsSur = 0;
-                tempsPrompt += Time.deltaTime;
-                tempsRed = 0;
-                break;
-            case 4:
-                tempsSous = 0;
-                tempsSur = 0;
-                tempsPrompt = 0;
-                tempsRed += Time.deltaTime;
-                break;
-            default:
-                tempsSous = 0;
-                tempsPrompt = 0;
-                tempsSur = 0;
-                tempsRed = 0;
-                break;
-        }
-    }
 
     public void barreControle()
     {
@@ -187,12 +147,16 @@ public class Cinétique : MonoBehaviour
         Lambda = (2.1 * 0.0001) / kEff;
         T = ((-rho + beta) / -rho) * 9.03;
         Ts = (Lambda / (-rho + beta));
-        nbNeutronsC = (inteSource * Lambda / -rho * ((rho / (-rho + beta) * Mathf.Pow(e, (float)(-tempsSous / Ts))) + (1 - (beta / (-rho + beta) * Mathf.Pow(e, (float)(-tempsSous / T))))));
+        nbNeutronsC = (inteSource * Lambda / -rho * ((rho / (-rho + beta) * Mathf.Pow(e, (float)(-temps / Ts))) + (1 - (beta / (-rho + beta) * Mathf.Pow(e, (float)(-temps / T))))));
         etat = 1;
     }
 
     void critique()
     {
+        if(etat != 0)
+        {
+            temps = 0;
+        }
         nbNeutronsI = nbNeutronsC;
         etat = 0;
     }
@@ -202,9 +166,10 @@ public class Cinétique : MonoBehaviour
         if (etat != 2)
         {
             nbNeutronsI = nbNeutronsC;
+            temps = 0;
         }
-        Tr = 0.085 / rho;
-        nbNeutronsC = (nbNeutronsI * (beta / (beta - rho) * Mathf.Pow(e, (float)(tempsSur / Tr))));
+        T = 0.085 / rho;
+        nbNeutronsC = (nbNeutronsI * (beta / (beta - rho) * Mathf.Pow(e, (float)(temps / T))));
         etat = 2;
     }
 
@@ -213,10 +178,11 @@ public class Cinétique : MonoBehaviour
         if (etat != 3)
         {
             nbNeutronsI = nbNeutronsC;
+            temps = 0;
         }
         Lambda = (2.1 * 0.0001) / kEff;
-        Tr = Lambda / (rho - beta);
-        nbNeutronsC = (nbNeutronsI * (Mathf.Pow(e, (float)(tempsPrompt / Tr))));
+        T = Lambda / (rho - beta);
+        nbNeutronsC = (nbNeutronsI * (Mathf.Pow(e, (float)(temps / T))));
         etat = 3;
     }
 
@@ -225,8 +191,9 @@ public class Cinétique : MonoBehaviour
         if(etat != 4)
         {
             nbNeutronsI = nbNeutronsC;
+            temps = 0;
         }
-        nbNeutronsC = nbNeutronsI * ((1/(1+ (-rho)))*MathF.Pow(e,(float)-tempsRed/80));
+        nbNeutronsC = nbNeutronsI * ((1/(1+ (-rho)))*MathF.Pow(e,(float)-temps/80));
         etat = 4;
     }
 
