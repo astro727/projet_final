@@ -40,5 +40,7 @@ public class Eau : MonoBehaviour
     {
         Vector3 position = startPosition[pos];
         Instantiate(tuyau, position, Quaternion.Euler(rotation[0], rotation[1], rotation[2]));
+        //var newObject = Instantiate(tuyau, position, Quaternion.Euler(rotation[0], rotation[1], rotation[2]));
+        //newObject.renderer.material.color = Color.green;
     }
 }

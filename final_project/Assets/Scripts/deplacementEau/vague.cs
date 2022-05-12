@@ -9,7 +9,7 @@ public class vague : MonoBehaviour
     // Mettre la postion dans la liste de vecteur du script qui va être sur chaque objet.
 
     [SerializeField] Vector3[] deplacement;
-    [SerializeField] public static float lerpTime = 3f; // C'est la variable qui controle la vitesse du deplacement des cylindres
+    [SerializeField] public static float lerpTime = 2f; // C'est la variable qui controle la vitesse du deplacement des cylindres
     private float elapsedTime;
     private Vector3 startPosition;
     
