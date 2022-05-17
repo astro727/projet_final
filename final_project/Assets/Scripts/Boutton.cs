@@ -3,11 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class Boutton : MonoBehaviour
 {
     public GameObject setup;
     public GameObject fonctionnement;
+    public GameObject boxes;
     public GameObject reacteur;
 
     Formule4facteurs f4f;
@@ -48,8 +51,13 @@ public class Boutton : MonoBehaviour
         {
             fonctionnement.SetActive(true);
             setup.SetActive(false);
+            boxes.SetActive(true);
+            vague.start = true;
         }
+    }
 
-        vague.start = true;
+    public void quitter()
+    {
+        SceneManager.LoadScene("Main");
     }
 }
