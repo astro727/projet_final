@@ -2126,17 +2126,13 @@ MonoBehaviour:
   nbNeutronsC: 0
   inteSource: 0
   puissance: 0
-  tempsSous: 0
-  tempsSur: 0
-  tempsPrompt: 0
-  tempsRed: 0
+  temps: 0
   kEffF: 0
   kEff: 0
   rho: 0
   pcm: 0
   pcmT: 0
   T: 0
-  Tr: 0
   Lambda: 0
   Ts: 0
   start: 0
@@ -5966,6 +5962,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hemisphere: {fileID: 897224520}
+  reacteur: {fileID: 263926179}
+  derriere: {fileID: 2075792778}
+  avant: {fileID: 1084546022}
+  couleur: {fileID: 2100000, guid: d2d0a40c1f8987d4187aded4c2648e10, type: 2}
+  vitesseFluide: 0
+  chaleurFluide: 0
 --- !u!1 &614402315
 GameObject:
   m_ObjectHideFlags: 0
@@ -6977,7 +6979,6 @@ GameObject:
   m_Component:
   - component: {fileID: 705270134}
   - component: {fileID: 705270136}
-  - component: {fileID: 705270135}
   m_Layer: 5
   m_Name: vue thermique
   m_TagString: Untagged
@@ -7007,19 +7008,6 @@ RectTransform:
   m_AnchoredPosition: {x: 101, y: 85}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &705270135
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 705270133}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28f679bafe447c4419d67d057abfb59f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hemisphere: {fileID: 0}
 --- !u!114 &705270136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7067,9 +7055,9 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 705270135}
+      - m_Target: {fileID: 611657859}
         m_TargetAssemblyTypeName: toggleBox, Assembly-CSharp
-        m_MethodName: vueCoup
+        m_MethodName: vueThermique
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10378,6 +10366,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1079462188}
   m_CullTransparentMesh: 1
+--- !u!1 &1084546022 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1927770180, guid: 9827d9001ef2969479cb7a74e9adb27b, type: 3}
+  m_PrefabInstance: {fileID: 734326867}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1134723092
 GameObject:
   m_ObjectHideFlags: 0
@@ -15508,7 +15501,6 @@ GameObject:
   - component: {fileID: 1726310487}
   - component: {fileID: 1726310486}
   - component: {fileID: 1726310485}
-  - component: {fileID: 1726310489}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -15599,34 +15591,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1726310489
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1726310484}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68d9816f113180b42a2bcbb9dd4925ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  E235: {fileID: 0}
-  Rn: {fileID: 0}
-  dia: {fileID: 0}
-  haut: {fileID: 0}
-  epsilon: 0
-  eta: 0
-  p: 0
-  f: 0
-  Kinf: 0
-  keff: 0
-  enrichissement: 0
-  moderation: 0
-  fuite: 0
-  D: 0
-  H: 0
-  rhoPCM: 0
 --- !u!1 &1733096533
 GameObject:
   m_ObjectHideFlags: 0
@@ -18068,6 +18032,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2030497692}
   m_CullTransparentMesh: 1
+--- !u!1 &2075792778 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 321073316, guid: 9827d9001ef2969479cb7a74e9adb27b, type: 3}
+  m_PrefabInstance: {fileID: 734326867}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2080647099
 GameObject:
   m_ObjectHideFlags: 0

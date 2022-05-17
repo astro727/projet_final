@@ -10,6 +10,8 @@ public class toggleBox : MonoBehaviour
     public GameObject derriere;
     public GameObject avant;
     public Material couleur;
+    public float vitesseFluide;
+    public float chaleurFluide;
     bool actif = true;
     bool therm = false;
     // Start is called before the first frame update
@@ -21,8 +23,11 @@ public class toggleBox : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        vague.lerpTime = 2 - 1.5f*(float)reacteur.GetComponent<Cinétique>().forcePompe / 44000000;
-        couleur.color = new Color((42+ 213* ((float) reacteur.GetComponent<Cinétique>().deltaTemp / 60)) , 71, (255*(1-(float) (reacteur.GetComponent<Cinétique>().deltaTemp/60))));
+        vitesseFluide = 1.5f * (float)reacteur.GetComponent<Cinétique>().forcePompe / 4400000000;
+        chaleurFluide = ((float)reacteur.GetComponent<Cinétique>().deltaTemp / 60);
+        vague.lerpTime = 2 - vitesseFluide;
+        if(reacteur.GetComponent<Cinétique>().deltaTemp >= 0)
+            couleur.color = new Color(( 0.165f + (0.84f* chaleurFluide)) , 0.278f, (1-chaleurFluide));
     }
 
     public void vueThermique()

@@ -43,6 +43,7 @@ public class Cinétique : MonoBehaviour
     private double beta = 0.0065;
     private float e = 2.71828f;
     private bool scram = false;
+    private bool moveBarre = false;
     private double keffI = 0;
 
     public bool start = false;
@@ -67,22 +68,25 @@ public class Cinétique : MonoBehaviour
 
         if (start == true)
         {
-
+            if(moveBarre)
+            {
+                barreControle();
+            }
             puissanceInstantane();
 
-            if (rho < -0.0001 && nbNeutronsI == 0)
+            if (rho < -0.00005 && nbNeutronsI == 0)
             {
                 sousCritique();
             }
-            if (rho < -0.0001 && nbNeutronsI != 0)
+            if (rho < -0.00005 && nbNeutronsI != 0)
             {
                 reduction();
             }
-            if (rho < 0.0001 && rho > -0.0001)
+            if (rho < 0.00005 && rho > -0.00005)
             {
                 critique();
             }
-            if (rho > 0.0001 && rho < beta)
+            if (rho > 0.00005 && rho < beta)
             {
                 superCritiqueRetarde();
             }
@@ -139,7 +143,15 @@ public class Cinétique : MonoBehaviour
 
     public void barreControle()
     {
-        f = fI * (1 - (Convert.ToDouble(positionC.GetComponent<TMP_InputField>().text) / 100) + 0.1 - (Convert.ToDouble(positionI.GetComponent<TMP_InputField>().text) / 1000) + 0.01- (Convert.ToDouble(positionP.GetComponent<TMP_InputField>().text) / 10000));
+        f += fI * (Time.deltaTime/10)*(1 - (Convert.ToDouble(positionC.GetComponent<TMP_InputField>().text) / 100) + 0.1 - (Convert.ToDouble(positionI.GetComponent<TMP_InputField>().text) / 1000) + 0.01- (Convert.ToDouble(positionP.GetComponent<TMP_InputField>().text) / 10000));
+        if(f != (Convert.ToDouble(positionC.GetComponent<TMP_InputField>().text) / 100) + 0.1 - (Convert.ToDouble(positionI.GetComponent<TMP_InputField>().text) / 1000) + 0.01 - (Convert.ToDouble(positionP.GetComponent<TMP_InputField>().text) / 10000))
+        {
+            moveBarre = true;
+        }
+        else
+        {
+            moveBarre = false;
+        }
     }
 
     void sousCritique()
