@@ -2109,12 +2109,14 @@ MonoBehaviour:
   positionP: {fileID: 264771414}
   positionI: {fileID: 1392960082}
   pompes: {fileID: 1995589371}
-  neutrons: {fileID: 0}
+  neutrons: {fileID: 712692524}
   epsilon: 0
   fuite: 0
   eta: 0
   p: 0
   f: 0
+  fPre: 0
+  fTemp: 0
   fI: 0
   pI: 0
   insertionP: 0
@@ -2127,6 +2129,7 @@ MonoBehaviour:
   inteSource: 0
   puissance: 0
   temps: 0
+  tpsMove: 0
   kEffF: 0
   kEff: 0
   rho: 0

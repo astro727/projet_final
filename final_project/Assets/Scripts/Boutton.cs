@@ -30,7 +30,7 @@ public class Boutton : MonoBehaviour
     {
         cin.start = true;
         GameObject temp;
-        temp = GameObject.Find("Source");
+        temp = GameObject.Find("source");
         if (Convert.ToDouble(temp.GetComponent<TMP_InputField>().text) > 0)
         {
             temp.SetActive(false);
