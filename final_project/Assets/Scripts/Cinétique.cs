@@ -45,7 +45,7 @@ public class Cinétique : MonoBehaviour
 
     private double beta = 0.0065;
     private float e = 2.71828f;
-    private bool scram = false;
+    public bool scram = false;
     private bool moveBarre = false;
     private double keffI = 0;
 
@@ -62,25 +62,13 @@ public class Cinétique : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (deltaTemp > 60)
+        if (deltaTemp > 60 && scram == false)
         {
             SCRAM();
         }
         temperature();
         reactivite();
-
-        if (moveBarre && tpsMove <10)
-        {
-            tpsMove += Time.deltaTime;
-            double deltaV = (fTemp-fPre);
-            f = fPre + (deltaV*tpsMove/10);
-        }
-        else
-        {
-            f = fTemp;
-            moveBarre = false;
-            tpsMove = 0;
-        }
+        mouvementControle();
 
         if (start == true)
         {
@@ -156,7 +144,7 @@ public class Cinétique : MonoBehaviour
 
     public void barreControle()
     {
-        if(moveBarre == false)
+        if(moveBarre == false || scram == true)
         {
             fTemp = fI * (1 - (Convert.ToDouble(positionC.GetComponent<TMP_InputField>().text) / 100) + 0.1 - (Convert.ToDouble(positionI.GetComponent<TMP_InputField>().text) / 1000) + 0.01 - (Convert.ToDouble(positionP.GetComponent<TMP_InputField>().text) / 10000));
             moveBarre = true;
@@ -234,8 +222,43 @@ public class Cinétique : MonoBehaviour
         positionI.GetComponent<TMP_InputField>().text = "100";
         pompes.GetComponent<TMP_InputField>().text = "4400";
         scram = true;
+        tpsMove = 0;
         setPuissancePompe();
         barreControle();
+    }
+
+    void mouvementControle()
+    {
+        if (scram == false)
+        {
+            if (moveBarre && tpsMove < 10)
+            {
+                tpsMove += Time.deltaTime;
+                double deltaV = (fTemp - fPre);
+                f = fPre + (deltaV * tpsMove / 10);
+            }
+            else
+            {
+                f = fTemp;
+                moveBarre = false;
+                tpsMove = 0;
+            }
+        }
+        else
+        {
+            if (moveBarre && tpsMove < 1)
+            {
+                tpsMove += Time.deltaTime;
+                double deltaV = (fTemp - fPre);
+                f = fPre + (deltaV * tpsMove);
+            }
+            else
+            {
+                f = fTemp;
+                moveBarre = false;
+                tpsMove = 0;
+            }
+        }
     }
 
 }
