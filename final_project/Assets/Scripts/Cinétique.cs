@@ -18,6 +18,8 @@ public class Cinétique : MonoBehaviour
     public double eta = 0;
     public double p = 0;
     public double f = 0;
+    public double fPre = 0;
+    public double fTemp = 0;
     public double fI = 0;
     public double pI = 0;
     public double insertionP = 0;
@@ -31,6 +33,7 @@ public class Cinétique : MonoBehaviour
     public double inteSource = 0;
     public double puissance = 0;
     public double temps = 0;
+    public double tpsMove = 0;
     public double kEffF = 0;
     public double kEff = 0;
     public double rho = 0;
@@ -42,7 +45,8 @@ public class Cinétique : MonoBehaviour
 
     private double beta = 0.0065;
     private float e = 2.71828f;
-    private bool scram = false;
+    public bool scram = false;
+    private bool moveBarre = false;
     private double keffI = 0;
 
     public bool start = false;
@@ -58,31 +62,32 @@ public class Cinétique : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (deltaTemp > 60)
+        if (deltaTemp > 60 && scram == false)
         {
             SCRAM();
         }
         temperature();
         reactivite();
+        mouvementControle();
 
         if (start == true)
         {
-
+            
             puissanceInstantane();
 
-            if (rho < -0.0001 && nbNeutronsI == 0)
+            if (rho < -0.00005 && nbNeutronsI == 0)
             {
                 sousCritique();
             }
-            if (rho < -0.0001 && nbNeutronsI != 0)
+            if (rho < -0.00005 && nbNeutronsI != 0)
             {
                 reduction();
             }
-            if (rho < 0.0001 && rho > -0.0001)
+            if (rho < 0.00005 && rho > -0.00005)
             {
                 critique();
             }
-            if (rho > 0.0001 && rho < beta)
+            if (rho > 0.00005 && rho < beta)
             {
                 superCritiqueRetarde();
             }
@@ -139,11 +144,17 @@ public class Cinétique : MonoBehaviour
 
     public void barreControle()
     {
-        f = fI * (1 - (Convert.ToDouble(positionC.GetComponent<TMP_InputField>().text) / 100) + 0.1 - (Convert.ToDouble(positionI.GetComponent<TMP_InputField>().text) / 1000) + 0.01- (Convert.ToDouble(positionP.GetComponent<TMP_InputField>().text) / 10000));
+        if(moveBarre == false || scram == true)
+        {
+            fTemp = fI * (1 - (Convert.ToDouble(positionC.GetComponent<TMP_InputField>().text) / 100) + 0.1 - (Convert.ToDouble(positionI.GetComponent<TMP_InputField>().text) / 1000) + 0.01 - (Convert.ToDouble(positionP.GetComponent<TMP_InputField>().text) / 10000));
+            moveBarre = true;
+            fPre = f;
+        }
     }
 
     void sousCritique()
     {
+        temps += Time.deltaTime;
         Lambda = (2.1 * 0.0001) / kEff;
         T = ((-rho + beta) / -rho) * 9.03;
         Ts = (Lambda / (-rho + beta));
@@ -168,6 +179,7 @@ public class Cinétique : MonoBehaviour
             nbNeutronsI = nbNeutronsC;
             temps = 0;
         }
+        temps += Time.deltaTime;
         T = 0.085 / rho;
         nbNeutronsC = (nbNeutronsI * (beta / (beta - rho) * Mathf.Pow(e, (float)(temps / T))));
         etat = 2;
@@ -180,6 +192,7 @@ public class Cinétique : MonoBehaviour
             nbNeutronsI = nbNeutronsC;
             temps = 0;
         }
+        temps += Time.deltaTime;
         Lambda = (2.1 * 0.0001) / kEff;
         T = Lambda / (rho - beta);
         nbNeutronsC = (nbNeutronsI * (Mathf.Pow(e, (float)(temps / T))));
@@ -193,6 +206,7 @@ public class Cinétique : MonoBehaviour
             nbNeutronsI = nbNeutronsC;
             temps = 0;
         }
+        temps += Time.deltaTime;
         nbNeutronsC = nbNeutronsI * ((1/(1+ (-rho)))*MathF.Pow(e,(float)-temps/80));
         etat = 4;
     }
@@ -206,8 +220,45 @@ public class Cinétique : MonoBehaviour
     {
         positionC.GetComponent<TMP_InputField>().text = "100";
         positionI.GetComponent<TMP_InputField>().text = "100";
+        pompes.GetComponent<TMP_InputField>().text = "4400";
         scram = true;
+        tpsMove = 0;
+        setPuissancePompe();
         barreControle();
+    }
+
+    void mouvementControle()
+    {
+        if (scram == false)
+        {
+            if (moveBarre && tpsMove < 10)
+            {
+                tpsMove += Time.deltaTime;
+                double deltaV = (fTemp - fPre);
+                f = fPre + (deltaV * tpsMove / 10);
+            }
+            else
+            {
+                f = fTemp;
+                moveBarre = false;
+                tpsMove = 0;
+            }
+        }
+        else
+        {
+            if (moveBarre && tpsMove < 1)
+            {
+                tpsMove += Time.deltaTime;
+                double deltaV = (fTemp - fPre);
+                f = fPre + (deltaV * tpsMove);
+            }
+            else
+            {
+                f = fTemp;
+                moveBarre = false;
+                tpsMove = 0;
+            }
+        }
     }
 
 }
