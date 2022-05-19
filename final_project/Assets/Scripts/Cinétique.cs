@@ -26,6 +26,7 @@ public class Cinétique : MonoBehaviour
     public double insertionS = 0;
     public double forcePompe = 24000000;
     public double chaleurPompe = 24000000;
+    public double termeInitial = 1;
     
     public double deltaTemp = 0;
     public double nbNeutronsI = 0;
@@ -121,7 +122,7 @@ public class Cinétique : MonoBehaviour
             pcm = ((kEffF - 1) / kEffF) * 100000;
         }
 
-        pcmT = pcm + (273 + deltaTemp) * -3 + (273 + deltaTemp) * -31.62647;
+        pcmT = pcm + (273 + deltaTemp) * -3 + (273 + deltaTemp) * -25;
         keffI = 1 / (1 - pcmT / 100000);
         p = keffI / (eta * epsilon * fI);
 
@@ -179,9 +180,13 @@ public class Cinétique : MonoBehaviour
             nbNeutronsI = nbNeutronsC;
             temps = 0;
         }
+        if(moveBarre == true)
+        {
+            termeInitial = (beta / (beta - rho));
+        }
         temps += Time.deltaTime;
         T = 0.085 / rho;
-        nbNeutronsC = (nbNeutronsI * (beta / (beta - rho) * Mathf.Pow(e, (float)(temps / T))));
+        nbNeutronsC = (nbNeutronsI * termeInitial * Mathf.Pow(e, (float)(temps / T)));
         etat = 2;
     }
 
