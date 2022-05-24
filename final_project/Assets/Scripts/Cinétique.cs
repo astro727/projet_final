@@ -27,6 +27,7 @@ public class Cinétique : MonoBehaviour
     public double forcePompe = 24000000;
     public double chaleurPompe = 24000000;
     public double termeInitial = 1;
+    public double exposantP = 0;
     
     public double deltaTemp = 0;
     public double nbNeutronsI = 0;
@@ -179,15 +180,16 @@ public class Cinétique : MonoBehaviour
         {
             nbNeutronsI = nbNeutronsC;
             temps = 0;
+            etat = 2;
         }
         if(moveBarre == true)
         {
             termeInitial = (beta / (beta - rho));
         }
-        temps += Time.deltaTime;
         T = 0.085 / rho;
-        nbNeutronsC = (nbNeutronsI * termeInitial * Mathf.Pow(e, (float)(temps / T)));
-        etat = 2;
+        temps += Time.deltaTime / T;
+        nbNeutronsC = (nbNeutronsI * termeInitial * Mathf.Pow(e, (float) temps));
+        exposantP = temps / T;
     }
 
     void superCritiquePrompt()

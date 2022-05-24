@@ -10,6 +10,8 @@ public class toggleBox : MonoBehaviour
     public GameObject derriere;
     public GameObject avant;
     public Material couleur;
+    public Material comb;
+    public Color cherenkov;
     public float vitesseFluide;
     public float chaleurFluide;
     bool actif = true;
@@ -17,7 +19,7 @@ public class toggleBox : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        cherenkov = comb.color;
     }
 
     // Update is called once per frame
@@ -28,6 +30,9 @@ public class toggleBox : MonoBehaviour
         vague.lerpTime = 2 - vitesseFluide;
         if(reacteur.GetComponent<Cinétique>().deltaTemp >= 0)
             couleur.color = new Color(( 0.165f + (0.84f* chaleurFluide)) , 0.278f, (1-chaleurFluide));
+        if (reacteur.GetComponent<Cinétique>().deltaTemp >= 0)
+            comb.color = (cherenkov * (float) (-5 + (733333333.3 / reacteur.GetComponent<Cinétique>().puissance)));
+            
     }
 
     public void vueThermique()
