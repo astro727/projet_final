@@ -19,7 +19,8 @@ public class toggleBox : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        cherenkov = comb.color;
+        cherenkov = new Color (0.176f, 0.867f, 0.796f);
+        comb.SetColor("_EmissionColor", (cherenkov * 0.2f));
     }
 
     // Update is called once per frame
@@ -30,9 +31,9 @@ public class toggleBox : MonoBehaviour
         vague.lerpTime = 2 - vitesseFluide;
         if(reacteur.GetComponent<Cinétique>().deltaTemp >= 0)
             couleur.color = new Color(( 0.165f + (0.84f* chaleurFluide)) , 0.278f, (1-chaleurFluide));
-        if (reacteur.GetComponent<Cinétique>().deltaTemp >= 0)
-            comb.color = (cherenkov * (float) (-5 + (733333333.3 / reacteur.GetComponent<Cinétique>().puissance)));
-            
+        if (reacteur.GetComponent<Cinétique>().puissance > 1)
+            comb.SetColor("_EmissionColor", (cherenkov * (0.0706f +(0.1294f*Mathf.Log((float) reacteur.GetComponent<Cinétique>().puissance)))));
+
     }
 
     public void vueThermique()
