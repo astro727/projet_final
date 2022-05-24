@@ -10,7 +10,11 @@ Material:
   m_Name: Techrenkov
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _ALPHAPREMULTIPLY_ON _EMISSION
+<<<<<<< HEAD
   m_LightmapFlags: 1
+=======
+  m_LightmapFlags: 2
+>>>>>>> c8df8a8ccb5562cddea55eac783fa968bc31443f
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: 3000
@@ -75,6 +79,11 @@ Material:
     - _UVSec: 0
     - _ZWrite: 0
     m_Colors:
+<<<<<<< HEAD
     - _Color: {r: 0, g: 0.72220373, b: 1, a: 1}
     - _EmissionColor: {r: 0.0006860537, g: 0.017608713, b: 0.043907437, a: 1}
+=======
+    - _Color: {r: 0.2783019, g: 1, b: 0.9796356, a: 1}
+    - _EmissionColor: {r: 0, g: 0.9424863, b: 1, a: 1}
+>>>>>>> c8df8a8ccb5562cddea55eac783fa968bc31443f
   m_BuildTextureStacks: []
