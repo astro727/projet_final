@@ -7022,6 +7022,7 @@ MonoBehaviour:
   forcePompe: 24000000
   chaleurPompe: 24000000
   termeInitial: 1
+  exposantP: 0
   deltaTemp: 0
   nbNeutronsI: 0
   nbNeutronsC: 0
@@ -16502,7 +16503,14 @@ MonoBehaviour:
   reacteur: {fileID: 263926179}
   derriere: {fileID: 2075792778}
   avant: {fileID: 1084546022}
+<<<<<<< Updated upstream
   couleur: {fileID: 2100000, guid: d2d0a40c1f8987d4187aded4c2648e10, type: 2}
+  comb: {fileID: 0}
+=======
+  couleur: {fileID: 2100000, guid: 2bacdbb68ac52f047980d33d29c2370a, type: 2}
+  comb: {fileID: 2100000, guid: 31e93e437f57cfb429a121e51c110bd3, type: 2}
+>>>>>>> Stashed changes
+  cherenkov: {r: 0, g: 0, b: 0, a: 0}
   vitesseFluide: 0
   chaleurFluide: 0
 --- !u!1 &614402315
