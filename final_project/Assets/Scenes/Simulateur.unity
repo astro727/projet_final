@@ -20570,6 +20570,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: deplacementAvant
       objectReference: {fileID: 0}
+    - target: {fileID: 4479019884801762207, guid: 9827d9001ef2969479cb7a74e9adb27b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5943797518362252976, guid: 9827d9001ef2969479cb7a74e9adb27b, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -20628,6 +20632,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7507672532770099179, guid: 9827d9001ef2969479cb7a74e9adb27b, type: 3}
       propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8282989208395557682, guid: 9827d9001ef2969479cb7a74e9adb27b, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8797165720501559822, guid: 9827d9001ef2969479cb7a74e9adb27b, type: 3}
