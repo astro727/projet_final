@@ -34,6 +34,7 @@ public class Cinétique : MonoBehaviour
     public double nbNeutronsC = 0;
     public double inteSource = 0;
     public double puissance = 0;
+    public double puissanceElectric = 0;
     public double temps = 0;
     public double tpsMove = 0;
     public double kEffF = 0;
@@ -170,6 +171,9 @@ public class Cinétique : MonoBehaviour
         {
             temps = 0;
         }
+        if(puissance < 4400000000)
+            forcePompe = puissance;
+
         nbNeutronsI = nbNeutronsC;
         etat = 0;
     }
@@ -221,6 +225,29 @@ public class Cinétique : MonoBehaviour
     void puissanceInstantane()
     {
         puissance = 200 * 1000000 * 1.602 * Mathf.Pow(10, -21) * p * f * nbNeutronsC;
+        if(deltaTemp > 0)
+        {
+            if(deltaTemp < 10)
+            {
+                puissanceElectric = ((forcePompe - 24000000) / (30 - deltaTemp)) * 0.32;
+            }
+            else
+            {
+                if(deltaTemp < 20)
+                {
+                    puissanceElectric = ((forcePompe - 24000000) / (30 - (1.25 * deltaTemp))) * 0.32;
+                }
+                else
+                {
+                    puissanceElectric = (forcePompe - 240000000) * 0.32;
+                }
+            }
+        }
+        else
+        {
+            puissanceElectric = 0;
+        }
+        
     }
 
     void SCRAM()
