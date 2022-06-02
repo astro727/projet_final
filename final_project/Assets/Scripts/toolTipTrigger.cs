@@ -23,12 +23,10 @@ public class toolTipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         time = false;
         tooltipSystem.Hide();
     }
-<<<<<<< HEAD
-
-    // Permet de choisir le delai d'affichage après avoir mis notre curseur
-=======
      
->>>>>>> d05c401c552a097e5c7284f6e090505cc6ade832
+    
+    // Permet de choisir le delai d'affichage après avoir mis notre curseur 
+
     IEnumerator delayedCall()
     {
         //ajoute un délai court avant l'affichage
