@@ -7112,7 +7112,7 @@ MonoBehaviour:
   positionI: {fileID: 1392960082}
   pompes: {fileID: 1995589371}
   neutrons: {fileID: 712692524}
-  ShutDown: {fileID: 0}
+  ShutDown: {fileID: 194780347}
   epsilon: 0
   fuite: 0
   eta: 0
@@ -7124,7 +7124,7 @@ MonoBehaviour:
   pI: 0
   insertionP: 0
   insertionS: 0
-  forcePompe: 24000000
+  forcePompe: 0
   chaleurPompe: 24000000
   termeInitial: 1
   exposantP: 0
