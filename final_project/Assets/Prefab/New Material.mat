@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Rouge
+  m_Name: New Material
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -74,10 +74,6 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-<<<<<<< HEAD
     - _Color: {r: 0.165, g: 0.278, b: 1, a: 1}
-=======
-    - _Color: {r: 2.6019804, g: 0.278, b: -1.9011672, a: 1}
->>>>>>> d6c66c304b4ae3d5e6de8fad6764e88622159cb4
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
