@@ -12,6 +12,7 @@ public class Cinétique : MonoBehaviour
     public GameObject positionI;
     public GameObject pompes;
     public GameObject neutrons;
+    public GameObject ShutDown;
 
     public double epsilon = 0;
     public double fuite = 0;
@@ -190,8 +191,8 @@ public class Cinétique : MonoBehaviour
         {
             temps = 0;
         }
-        if(puissance < (4400000000-24000000))
-            forcePompe = puissance+ 24000000;
+        if(puissance < (4400000000))
+            forcePompe = puissance;
 
         nbNeutronsI = nbNeutronsC;
         etat = 0;
@@ -248,7 +249,7 @@ public class Cinétique : MonoBehaviour
     {
         //calcul al puissance à un moment donné ainsi que la puissance électrique
         puissance = 200 * 1000000 * 1.602 * Mathf.Pow(10, -21) * p * f * nbNeutronsC;
-        if(deltaTemp > 0 && forcePompe >= 24000000)
+        if(deltaTemp > 0 && forcePompe > 0)
         {
             if(deltaTemp < 10)
             {
@@ -280,6 +281,7 @@ public class Cinétique : MonoBehaviour
         positionI.GetComponent<TMP_InputField>().text = "100";
         pompes.GetComponent<TMP_InputField>().text = "4400";
         scram = true;
+        ShutDown.SetActive(true);
         tpsMove = 0;
         setPuissancePompe();
         barreControle();
