@@ -15,6 +15,7 @@ public class valeurCinetique : MonoBehaviour
     public GameObject positionP;
     public GameObject positionI;
     public GameObject Pe;
+    public GameObject N;
     double finst;
 
     public GameObject reacteur;
@@ -32,6 +33,11 @@ public class valeurCinetique : MonoBehaviour
         K.GetComponent<TMP_Text>().text = "K = " + cin.kEff.ToString();
         f.GetComponent<TMP_Text>().text = "F = " + cin.f.ToString();
         T.GetComponent<TMP_Text>().text = "T = " + (Math.Round(cin.deltaTemp, 2) + 273).ToString() + "°C";
+        if (cin.puissance < 1)
+            N.GetComponent<TMP_Text>().text = "Neutrons = " + Math.Round(cin.nbNeutronsC, 0);
+        else
+            N.SetActive(false);
+
         //vérification de l'ordre de magnitude de la puissance, puis assignation de l'unité appropriée
         if (cin.puissance > 1)
         {

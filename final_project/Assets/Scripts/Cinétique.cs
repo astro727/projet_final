@@ -132,7 +132,7 @@ public class Cinétique : MonoBehaviour
             pcm = ((kEffF - 1) / kEffF) * 100000;
         }
         //déduit la valeur p modifié pour la température
-        pcmT = pcm + (273 + deltaTemp) * -3 + (273 + deltaTemp) * -25;
+        pcmT = pcm + (273 + deltaTemp) * -3 + (273 + deltaTemp) * -30;
         keffI = 1 / (1 - pcmT / 100000);
         p = keffI / (eta * epsilon * fI);
 
@@ -193,6 +193,7 @@ public class Cinétique : MonoBehaviour
         }
         if(puissance < (4400000000))
             forcePompe = puissance;
+        pompes.GetComponent<TMP_InputField>().text = (puissance / 1000000).ToString();
 
         nbNeutronsI = nbNeutronsC;
         etat = 0;
@@ -253,17 +254,17 @@ public class Cinétique : MonoBehaviour
         {
             if(deltaTemp < 10)
             {
-                puissanceElectric = ((forcePompe - 24000000) / (30 - deltaTemp)) * 0.32;
+                puissanceElectric = ((forcePompe) / (30 - deltaTemp)) * 0.32;
             }
             else
             {
                 if(deltaTemp < 20)
                 {
-                    puissanceElectric = ((forcePompe - 24000000) / (30 - (1.25 * deltaTemp))) * 0.32;
+                    puissanceElectric = ((forcePompe) / (30 - (1.25 * deltaTemp))) * 0.32;
                 }
                 else
                 {
-                    puissanceElectric = (forcePompe - 24000000) * 0.32;
+                    puissanceElectric = (forcePompe) * 0.32;
                 }
             }
         }

@@ -56,6 +56,7 @@ public class Boutton : MonoBehaviour
     public void quitter()
     {
         //retour au menu
+        vague.start = false;
         SceneManager.LoadScene("Main");
     }
 }
