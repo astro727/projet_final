@@ -5320,7 +5320,7 @@ GameObject:
   - component: {fileID: 194780349}
   - component: {fileID: 194780348}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: scram
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5400,6 +5400,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1749449817}
+  - {fileID: 947947235}
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -26828,16 +26829,16 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 947947234}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 187}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -21.699997}
+  m_LocalScale: {x: 2, y: 2, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1749449817}
-  m_RootOrder: 2
+  m_Father: {fileID: 194780351}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1107, y: -406}
+  m_AnchoredPosition: {x: 5, y: 171}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &947947236
@@ -34074,7 +34075,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1232209783745725365, guid: c271a9c01f1445942984cf23f13c7c9d, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1232209783745725365, guid: c271a9c01f1445942984cf23f13c7c9d, type: 3}
       propertyPath: m_LocalScale.x
@@ -34086,7 +34087,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1232209783745725365, guid: c271a9c01f1445942984cf23f13c7c9d, type: 3}
       propertyPath: m_LocalScale.z
-      value: 100
+      value: 800
       objectReference: {fileID: 0}
     - target: {fileID: 1232209783745725365, guid: c271a9c01f1445942984cf23f13c7c9d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -45392,7 +45393,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1232209783745725365, guid: c271a9c01f1445942984cf23f13c7c9d, type: 3}
       propertyPath: m_LocalScale.z
-      value: 100
+      value: 800
       objectReference: {fileID: 0}
     - target: {fileID: 1232209783745725365, guid: c271a9c01f1445942984cf23f13c7c9d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -48975,7 +48976,6 @@ Transform:
   m_Children:
   - {fileID: 1625288930}
   - {fileID: 2004996786}
-  - {fileID: 947947235}
   - {fileID: 1210121679}
   m_Father: {fileID: 194780351}
   m_RootOrder: 0
