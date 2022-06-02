@@ -5,25 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class ecranAccueil : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   
 
     public void play()
     {
+        //changement de scène
         SceneManager.LoadScene("Simulateur");
     }
 
     public void quit()
     {
+        //sortie de l'application
         Application.Quit();
     }
 }

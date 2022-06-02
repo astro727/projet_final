@@ -17,12 +17,14 @@ public class toolTipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     public void OnPointerExit(PointerEventData eventData)
     {
+        //désactive la variable bool pour annuler l'affichage si l'utilisateur quite la zone
         time = false;
         tooltipSystem.Hide();
     }
-
+     
     IEnumerator delayedCall()
     {
+        //ajoute un délai court avant l'affichage
         time = true;
         yield return new WaitForSeconds(0.5f);
         if(time == true)
