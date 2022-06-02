@@ -20,7 +20,7 @@ public class toggleBox : MonoBehaviour
     void Start()
     {
         cherenkov = new Color (0.176f, 0.867f, 0.796f);
-        comb.SetColor("_EmissionColor", (cherenkov * 0.2f));
+        comb.SetColor("_EmissionColor", (cherenkov * 0.01f));
     }
 
     // Update is called once per frame

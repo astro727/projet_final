@@ -14,6 +14,7 @@ public class valeurCinetique : MonoBehaviour
     public GameObject positionC;
     public GameObject positionP;
     public GameObject positionI;
+    public GameObject Pe;
     double finst;
 
     public GameObject reacteur;
@@ -58,8 +59,40 @@ public class valeurCinetique : MonoBehaviour
         }
         else 
         {
-            P.GetComponent<TMP_Text>().text = "P = 0W";
+            P.GetComponent<TMP_Text>().text = "Puissance = 0W";
         }
+
+        if (cin.puissanceElectric > 1)
+        {
+            if (cin.puissanceElectric < 1000)
+            {
+                Pe.GetComponent<TMP_Text>().text = "Électricité = " + (Math.Round(cin.puissanceElectric, 1)).ToString() + "W";
+            }
+            else
+            {
+                if (cin.puissanceElectric < 1000000)
+                {
+                    Pe.GetComponent<TMP_Text>().text = "Électricité = " + (Math.Round(cin.puissanceElectric / 1000, 1)).ToString() + "kW";
+                }
+                else
+                {
+                    if (cin.puissanceElectric < 1000000000)
+                    {
+                        Pe.GetComponent<TMP_Text>().text = "Électricité = " + (Math.Round(cin.puissanceElectric / 1000000, 1)).ToString() + "MW";
+                    }
+                    else
+                    {
+                        Pe.GetComponent<TMP_Text>().text = "Électricité = " + (Math.Round(cin.puissanceElectric / 1000000000, 1)).ToString() + "GW";
+                    }
+                }
+
+            }
+        }
+        else
+        {
+            Pe.GetComponent<TMP_Text>().text = "Électricité = 0W";
+        }
+
         finst = cin.fI* (1 - (Convert.ToDouble(positionC.GetComponent<TMP_InputField>().text) / 100) + 0.1 - (Convert.ToDouble(positionI.GetComponent<TMP_InputField>().text) / 1000) + 0.01 - (Convert.ToDouble(positionP.GetComponent<TMP_InputField>().text) / 10000));
         rho.GetComponent<TMP_Text>().text = "réactivité = " + (Math.Round(cin.rho / 0.0065, 2)).ToString() + "$ (" + Math.Round(((cin.p*cin.epsilon*cin.eta*finst-1)/ (cin.p * cin.epsilon * cin.eta * finst))/0.0065, 2) + ")";
         if(cin.rho > 0.0065)
