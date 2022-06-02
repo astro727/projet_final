@@ -20,12 +20,14 @@ public class tooltip : MonoBehaviour
 
     private void Awake()
     {
+        //optien la composante de position du tooltip
         rectTransform = GetComponent<RectTransform>();
     }
 
     //Permet de choisir l'affichage du tooltip
     public void SetText(string content, string header = "")
     {
+        //assigne l'entête si il y alieu
         if(string.IsNullOrEmpty(header))
         {
             headerField.gameObject.SetActive(false);
@@ -36,17 +38,19 @@ public class tooltip : MonoBehaviour
             headerField.text = header;
         }
 
+        //assigne le texte
         contentField.text = content;
 
         int headerLength = headerField.text.Length;
         int contentLength = contentField.text.Length;
-
+        //vérifie si le texte doit modifier la largeur du tooltip, ou s'il doit suivre la largeur assigner 
         layoutElement.enabled = (headerLength > (characterWrapLimit / 1.5) || contentLength > characterWrapLimit) ? true : false;
     }
 
     //Permet que le tooltip suive le curseur et d'afficher le tooltip au bon endroit.
     private void Update()
     {
+        //permet l'affichage in editor
         if (Application.isEditor)
         {
             int headerLength = headerField.text.Length;
@@ -54,12 +58,14 @@ public class tooltip : MonoBehaviour
 
             layoutElement.enabled = (headerLength > (characterWrapLimit / 1.5) || contentLength > characterWrapLimit) ? true : false;
         }
-
+        //obtien la position du curseur
         Vector2 position = Input.mousePosition;
 
+        //position pivot pour rester sur l'écran
         float pivotX = position.x / Screen.width;
         float pivotY = position.y / Screen.height;
 
+        //assigner position
         rectTransform.pivot = new Vector2(pivotX, pivotY);
         transform.position = position;
     }

@@ -23,30 +23,27 @@ public class Boutton : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void lancer()
     {
-        cin.start = true;
+        //vérifie qu'une source de neutrons est spécifié avant de démarer le réacteur;
         GameObject temp;
         temp = GameObject.Find("source");
         if (Convert.ToDouble(temp.GetComponent<TMP_InputField>().text) > 0)
         {
+            cin.start = true;
             temp.SetActive(false);
             this.gameObject.SetActive(false);
         }
     }
     public void confirmer()
     {
+        //insère les barres de contrôle
         cin.barreControle();
     }
 
     public void swap()
     {
+        //changement de canvas à l'appuie du bouton
         if(f4f.keff > 0)
         {
             fonctionnement.SetActive(true);
@@ -58,6 +55,7 @@ public class Boutton : MonoBehaviour
 
     public void quitter()
     {
+        //retour au menu
         SceneManager.LoadScene("Main");
     }
 }
