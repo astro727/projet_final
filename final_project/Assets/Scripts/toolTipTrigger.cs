@@ -9,18 +9,21 @@ public class toolTipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     public string content;
 
+// Permet de choisir l'action lorsque l'utilisateur mets son curseur sur le texte. Dans notre cas, nous avons décidé d'afficher un tooltip
     private bool time = false;
     public void OnPointerEnter(PointerEventData eventData)
     {
         StartCoroutine(delayedCall());
     }
 
+    // Permet de choisir l'action lorsque l'utilisateur enlève son curseur sur le texte. Dans notre cas, nous avons décidé d'enlever le tooltip
     public void OnPointerExit(PointerEventData eventData)
     {
         time = false;
         tooltipSystem.Hide();
     }
 
+    // Permet de choisir le delai d'affichage après avoir mis notre curseur
     IEnumerator delayedCall()
     {
         time = true;

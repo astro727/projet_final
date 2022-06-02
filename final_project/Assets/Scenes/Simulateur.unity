@@ -12658,7 +12658,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 92, y: 135}
+  m_AnchoredPosition: {x: 92, y: 145}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &488930949
@@ -14769,7 +14769,7 @@ MonoBehaviour:
   header: "Facteur de mutiplicit\xE9 effectif"
   content: "La diff\xE9rence entre ce facteur et le facteur infini est presque n\xE9gligeable
     dans ce mod\xE8le simplifi\xE9, mais joue un r\xF4le important dans le contr\xF4le
-    des r\xE9ateurs r\xE9el. Il prend en compte les effets des dimensions du r\xE9acteur."
+    des r\xE9acteurs r\xE9el. Il prend en compte les effets des dimensions du r\xE9acteur."
 --- !u!1 &530976568
 GameObject:
   m_ObjectHideFlags: 0
@@ -23448,7 +23448,7 @@ MonoBehaviour:
   content: "L'\xE9nergie thermique du r\xE9acteur n'est pas enti\xE8rement convertie
     en \xE9lectricit\xE9, une grande partie est perdue. La puissance \xE9lectrique
     d\xE9pend de l'\xE9nergie extraite par les pompes, mais la conversion de la chaleur
-    en vapeur est plus efficace \xE0 des plus hautes temp\xE9ratures, donc une plus
+    en vapeur est plus efficace \xE0 de plus hautes temp\xE9ratures, donc une plus
     haute temp\xE9rature m\xE8ne \xE0 une plus haute puissance."
 --- !u!114 &828956113
 MonoBehaviour:
@@ -23562,9 +23562,9 @@ RectTransform:
   m_Father: {fileID: 102592281}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 146, y: 53}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -318, y: 53}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &829803559
@@ -24027,7 +24027,7 @@ MonoBehaviour:
   header: Extraction de la chaleur
   content: "La chaleur contenue dans l'eau du r\xE9acteur est extraite par des pompes
     qui m\xE8nent l'eau \xE0 des \xE9changeurs de chaleurs. Dans ces \xE9changeurs,
-    la chaleur est transf\xE9r\xE9 \xE0 une deuxi\xE8me masse d'eau, mais non pr\xE9ssuris\xE9e,
+    la chaleur est transf\xE9r\xE9e \xE0 une deuxi\xE8me masse d'eau, mais non pressuris\xE9e,
     cette eau se change donc en vapeur, puis cette vapeur est utilis\xE9e pour produire
     de l'\xE9lectricit\xE9 dans un syst\xE8me de turbines. L'eau du r\xE9acteur,
     une fois refroidie dans les \xE9changeurs, retourne au r\xE9acteur."
@@ -28569,7 +28569,7 @@ MonoBehaviour:
   header: "Les barres de contr\xF4le"
   content: "Le facteur f est contr\xF4l\xE9 par les barres de contr\xF4le lors de
     l'op\xE9ration du r\xE9acteur. Les barres de contr\xF4le sont des minces tiges
-    de m\xE9tal compos\xE9es d'un mat\xE9riau qui absorbe \xE9norm\xE9ment de neutron.
+    de m\xE9tal compos\xE9es d'un mat\xE9riau qui absorbe \xE9norm\xE9ment de neutrons.
     Leur insertion permet donc de r\xE9duire la r\xE9activit\xE9 du r\xE9acteur par
     le facteur f pour permettre la production d'\xE9lectricit\xE9. "
 --- !u!1 &990159264
@@ -28907,9 +28907,9 @@ RectTransform:
   m_Father: {fileID: 376379137}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -320, y: -120}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 129, y: 100}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1000047949
@@ -28926,7 +28926,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   header: Facteur anti-trappe
   content: "Ce facteur prend en compte le nombre de neutrons absorb\xE9s par l'uranium
-    238 sans fission. M\xEAme s'il peut fissioner, l'uranium 238 absorbe beaucoup
+    238 sans fission. M\xEAme s'il peut fissionner, l'uranium 238 absorbe beaucoup
     plus souvent les neutrons qu'il fissione. Augmenter l'enrichissement diminue
     la perte de neutron."
 --- !u!114 &1000047950
@@ -29309,11 +29309,11 @@ RectTransform:
   m_Father: {fileID: 376379137}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -380, y: -60}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 44, y: 135}
   m_SizeDelta: {x: 50, y: 50}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 0}
 --- !u!114 &1016596005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29329,9 +29329,9 @@ MonoBehaviour:
   header: Facteur de fission rapide
   content: "Ce facteur prend en compte la proportion des neutrons produits dans le
     r\xE9acteur par des neutrons rapides, donc ceux qui n'ont pas encore \xE9t\xE9
-    ralenti par le mod\xE9rateur. Il d\xE9pend beaucoup de la quantit\xE9 d'uranium
-    238, puisque cet isotope peut fissioner plus efficacement que l'uranium 235 dans
-    un flux rapide."
+    ralentis par le mod\xE9rateur. Il d\xE9pend beaucoup de la quantit\xE9 d'uranium
+    238, puisque cet isotope peut fissionner plus efficacement que l'uranium 235
+    dans un flux rapide."
 --- !u!114 &1016596006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31529,7 +31529,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 92, y: 59}
+  m_AnchoredPosition: {x: 92, y: 27}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1123355646
@@ -32801,8 +32801,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1174771338}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 350, y: 304, z: 200}
-  m_LocalScale: {x: 150, y: 1, z: 150.00006}
+  m_LocalPosition: {x: 816, y: 304, z: 200}
+  m_LocalScale: {x: 500, y: 1, z: 150.00006}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -34587,8 +34587,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   header: "Barres de contr\xF4le p\xE9riph\xE9riques"
   content: "Ce sont les barres de contr\xF4le en p\xE9riph\xE9rie du r\xE9acteur.
-    Elle sont si \xE9loign\xE9 du centre de flux neutronique que leur impacte sur
-    la r\xE9activit\xE9 se calcule en centime."
+    Elles sont si \xE9loign\xE9es du centre de flux neutronique que leur impacte
+    sur la r\xE9activit\xE9 se calcule en centime."
 --- !u!1 &1237213618
 GameObject:
   m_ObjectHideFlags: 0
@@ -35339,9 +35339,9 @@ RectTransform:
   m_Father: {fileID: 376379137}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -320, y: -60}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 129, y: 160}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1266555559
@@ -37069,7 +37069,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   header: "Barres de contr\xF4le interm\xE9diaires"
-  content: "Ce sont les barres de contr\xF4le situ\xE9 entre le centre el l'extr\xE9mit\xE9
+  content: "Ce sont les barres de contr\xF4le situ\xE9 entre le centre de l'extr\xE9mit\xE9
     du r\xE9acteur. Leur impacte sur la r\xE9activit\xE9 n'est pas si important que
     pour les barres centrales, mais le flux neutronique \xE0 leur niveau est toujours
     relativement \xE9lev\xE9."
@@ -40183,7 +40183,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "r\xE9activvit\xE9 ="
+  m_text: "R\xE9activit\xE9 ="
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -40277,7 +40277,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -401, y: -42}
+  m_AnchoredPosition: {x: -403, y: -42}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1453456278
@@ -40294,11 +40294,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   header: Le dollar
   content: "Il ne s'agit pas d'argent, mais bel et bien de r\xE9activit\xE9. En physique
-    des r\xE9acteurs, un dollar est la limite de sstabilit\xE9 d'un r\xE9acteur.
-    Plus d'un dollar de r\xE9activit\xE9 veut dire que le r\xE9acteur est critique
-    prompt, donc sa puissance augmente \xE0 un rythme difficilement contr\xF4lable.
-    Une quantit\xE9 n\xE9gative de dollar repr\xE9sente un r\xE9acteur dont la puissance
-    diminue."
+    des r\xE9acteurs, un dollar est la limite de stabilit\xE9 d'un r\xE9acteur. Plus
+    d'un dollar de r\xE9activit\xE9 veut dire que le r\xE9acteur est critique prompt,
+    donc sa puissance augmente \xE0 un rythme difficilement contr\xF4lable. Une quantit\xE9
+    n\xE9gative de dollars repr\xE9sente un r\xE9acteur dont la puissance diminue."
 --- !u!1 &1453711713
 GameObject:
   m_ObjectHideFlags: 0
@@ -40906,7 +40905,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -304, y: 105}
+  m_AnchoredPosition: {x: -220, y: 133}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1472641910
@@ -41018,14 +41017,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92c012c806913094a826e8cc6f44c228, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  header: "La temp\xE9raturre"
+  header: "La temp\xE9rature"
   content: "Malgr\xE9 qu'un r\xE9acteur soit refroidi \xE0 l'eau, sa temp\xE9rature
-    d'op\xE9ration exc\xE8de largement le 100 degr\xE9. Cela est possible gr\xE2ce
-    \xE0 la haute pression d'op\xE9ration. \xC0 haute pression, les points d'\xE9bulitions
+    d'op\xE9ration exc\xE8de largement le 100 degr\xE9s. Cela est possible gr\xE2ce
+    \xE0 la haute pression d'op\xE9ration. \xC0 haute pression, les points d'\xE9bulition
     sont plus haut, donc l'eau reste liquide m\xEAme \xE0 300 degr\xE9s. Cela dit,
-    l'eau peut toujours sse mettre \xE0 bouillir et \xE0 prendre de l,expension si
+    l'eau peut toujours se mettre \xE0 bouillir et \xE0 prendre de l'expansion si
     la temp\xE9rature augmente trop, ce qui pose un danger consid\xE9rable au r\xE9acteur.
-    C'est pouquoi tout les r\xE9acteurs poss\xE8dent des m\xE9canisme d'arr\xEAt
+    C'est pourquoi tous les r\xE9acteurs poss\xE8dent des m\xE9canismes d'arr\xEAt
     automatique si la temp\xE9rature atteint des niveaux dangereux."
 --- !u!1 &1475864932
 GameObject:
@@ -41305,7 +41304,7 @@ RectTransform:
   m_GameObject: {fileID: 1486846902}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 623370473}
@@ -41314,7 +41313,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -121, y: 53}
+  m_AnchoredPosition: {x: -139, y: 53}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1486846904
@@ -43212,8 +43211,8 @@ MonoBehaviour:
   header: 
   content: "Il s'agit du rapport entre le nombre de mol\xE9cules d'hydrog\xE8ne dans
     l'eau et l'uranium dans le r\xE9acteur. L'eau absorbe les neutrons, mais elle
-    les rends aussi plus lents, ce qui augmente le nombre de r\xE9action. Il existe
-    donc un point ou l'augmentation de la mod\xE9ration arr\xEAte de faire augmenter
+    les rend aussi plus lents, ce qui augmente le nombre de r\xE9actions. Il existe
+    donc un point o\xF9 l'augmentation de la mod\xE9ration arr\xEAte de faire augmenter
     la r\xE9activit\xE9."
 --- !u!1 &1549600528
 GameObject:
@@ -43870,7 +43869,7 @@ RectTransform:
   m_GameObject: {fileID: 1582766303}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 952708238}
@@ -43880,7 +43879,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 144, y: -41}
+  m_AnchoredPosition: {x: 169, y: -55}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1582766305
@@ -43994,8 +43993,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   header: Formule des quatre facteurs
   content: "Il s'agit de la formule fondamentale de la physique des r\xE9acteurs
-    nucl\xE9aire. Son r\xE9sultat d\xE9termine le facteur de multiplication que subissent
-    les neutrons d'une g\xE9n\xE9ration \xE0 l'autre."
+    nucl\xE9aires. Son r\xE9sultat d\xE9termine le facteur de multiplication que
+    subissent les neutrons d'une g\xE9n\xE9ration \xE0 l'autre."
 --- !u!1 &1585249395
 GameObject:
   m_ObjectHideFlags: 0
@@ -57405,9 +57404,9 @@ RectTransform:
   m_Father: {fileID: 376379137}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -380, y: -120}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 69, y: 100}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2104723474

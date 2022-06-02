@@ -23,6 +23,7 @@ public class tooltip : MonoBehaviour
         rectTransform = GetComponent<RectTransform>();
     }
 
+    //Permet de choisir l'affichage du tooltip
     public void SetText(string content, string header = "")
     {
         if(string.IsNullOrEmpty(header))
@@ -43,6 +44,7 @@ public class tooltip : MonoBehaviour
         layoutElement.enabled = (headerLength > (characterWrapLimit / 1.5) || contentLength > characterWrapLimit) ? true : false;
     }
 
+    //Permet que le tooltip suive le curseur et d'afficher le tooltip au bon endroit.
     private void Update()
     {
         if (Application.isEditor)
