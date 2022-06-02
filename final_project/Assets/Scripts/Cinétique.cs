@@ -24,7 +24,7 @@ public class Cinétique : MonoBehaviour
     public double pI = 0;
     public double insertionP = 0;
     public double insertionS = 0;
-    public double forcePompe = 24000000;
+    public double forcePompe = 0;
     public double chaleurPompe = 24000000;
     public double termeInitial = 1;
     public double exposantP = 0;
@@ -145,7 +145,14 @@ public class Cinétique : MonoBehaviour
         //calcul la variation de la température en fonction de la puissance et de la puissance des pompes
         if(deltaTemp > -253)
         {
-            deltaTemp += Time.deltaTime * ((forcePompe/(-4184 * masseEau)) + (chaleurPompe/(4184*masseEau)) + (puissance/(4184*masseEau)));
+            if(deltaTemp < 0)
+            {
+                deltaTemp += Time.deltaTime * ((forcePompe / (-4184 * masseEau)) + (chaleurPompe / (4184 * masseEau)) + (puissance / (4184 * masseEau)));
+            }
+            else
+            {
+                deltaTemp += Time.deltaTime * ((forcePompe / (-4184 * masseEau)) + (puissance / (4184 * masseEau)));
+            }
         }
         else
         {
@@ -183,8 +190,8 @@ public class Cinétique : MonoBehaviour
         {
             temps = 0;
         }
-        if(puissance < 4400000000)
-            forcePompe = puissance;
+        if(puissance < (4400000000-24000000))
+            forcePompe = puissance+ 24000000;
 
         nbNeutronsI = nbNeutronsC;
         etat = 0;
